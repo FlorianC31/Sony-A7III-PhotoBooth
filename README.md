@@ -1,4 +1,4 @@
-# PhotoBooth
+# Sony A7III PhotoBooth
 Wedding Photobooth control software
 
 This aim project of this projects is to make a wedding photobooth with a Sony A7III, a 14" tactile notebook and a photo printer.
