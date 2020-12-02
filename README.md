@@ -15,3 +15,8 @@ https://www.amazon.fr/gp/product/B08CGVSRQV/ref=ppx_yo_dt_b_asin_title_o05_s00?i
 The Light and Fans are controlled by an USB relay card:
 SainSmart USB 4 canal Relais automatisation
 https://www.amazon.fr/gp/product/B009A524Z0/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
+
+
+
+How to use:
+The main file is PhotoBooth.py
