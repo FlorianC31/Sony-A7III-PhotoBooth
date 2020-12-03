@@ -17,6 +17,11 @@ SainSmart USB 4 canal Relais automatisation
 https://www.amazon.fr/gp/product/B009A524Z0/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
 
 
-
-How to use:
-The main file is PhotoBooth.py
+File Description:
+- PhotoBooth.py -> Main file
+- MainWindow.py -> PyQt library for GUI
+- Webcam.py -> OpenV library to capture HDMI video flow
+- printer.py -> Printer library
+- relais.py -> Library to handle Relay USB Card
+- remoteTrigger.py -> Library to trigger Sony Alpha Cam via Sony Remote app
+- CheckLibraries.py -> Script to check if all the dependencies are installed
