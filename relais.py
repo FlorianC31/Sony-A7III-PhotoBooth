@@ -36,7 +36,7 @@ class relais():
                 time.sleep(4) # Wait 4 seconds
                 self.init(iter+1)
         else:
-            print('Impossible de se connectr à la carte relais, vérifier les connexions')
+            print('Impossible de se connecter à la carte relais, vérifier les connexions et redémarrer tous les modules')
             sys.exit(0)
         
 
@@ -66,6 +66,7 @@ class relais():
         
     def OFF(self,SlotName):
         slotID=self.slot[SlotName]
+        self.setRelay(self.getRelayID(slotID), False)
         self.setRelay(self.getRelayID(slotID), False)
         print("Relais "+str(slotID)+": OFF")
         

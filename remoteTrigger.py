@@ -32,9 +32,9 @@ class Window():
         
 
     
-    #def Move(self,DeltaX):
-    #    rect = win32gui.GetWindowRect(self.getHwnd())
-    #    win32gui.MoveWindow(self.getHwnd(), rect[0]+DeltaX, rect[1], rect[2]+DeltaX, rect[3], True)
+    def Move(self,DeltaX):
+        rect = win32gui.GetWindowRect(self.getHwnd())
+        win32gui.MoveWindow(self.getHwnd(), rect[0]+DeltaX, rect[1], rect[2]+DeltaX, rect[3], True)
     
     def Click(self,Xrelative,Yrelative,doubleClick):
         if self.isOpen():
@@ -124,6 +124,7 @@ class Camera:
 
     def Trigger(self):
 
+        self.RemoteWindow.Move(3000)
         self.RemoteWindow.Show()
 
         keyboard.press('&')
@@ -131,6 +132,7 @@ class Camera:
         keyboard.release('&')
         
         self.PhotoBoothWindow.Show()
+        self.RemoteWindow.Move(-3000)
 
         
 

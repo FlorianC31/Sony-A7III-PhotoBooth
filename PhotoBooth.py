@@ -10,7 +10,7 @@ from MainWindow import Ui_PhotoBooth
 from Webcam import Thread
 from remoteTrigger import Camera
 from printer import printer
-from relais import relais
+#from relais import relais
 
 from PIL import Image, ExifTags
 from PIL.ImageQt import ImageQt
@@ -27,9 +27,9 @@ from datetime import datetime
 
 
 
-PHOTOFOLDER="E:\Python\Projets\Photobooth\Photos\\"
+PHOTOFOLDER=r'C:\Users\Aurélie\Desktop\Version2\photos\\'
 PICTYPE="JPG"
-DEVELOPERMODE=True
+DEVELOPERMODE=False
 
 
 
@@ -77,7 +77,8 @@ class PhotoBooth(Ui_PhotoBooth):
             rect = win32gui.GetWindowRect(win32gui.FindWindow(None, 'PhotoBooth'))
             win32gui.MoveWindow(win32gui.FindWindow(None, 'PhotoBooth'), rect[0]+3000, rect[1], rect[2]+3000, rect[3], True)
         else:            
-            self.widgetDevelopper.hide()
+            pass
+            #self.widgetDevelopper.hide()
         self.fullScreen()
     
     
@@ -156,8 +157,6 @@ class PhotoBooth(Ui_PhotoBooth):
         
     def TakePhoto(self):
         
-        
-        
         oldPic=photo()
         
         self.camera.Trigger()
@@ -226,10 +225,14 @@ class photo():
         self.folder=PHOTOFOLDER
         self.PicType=PICTYPE
         list_of_files = glob.glob(self.folder + '*.' + self.PicType)
-        self.path=max(list_of_files, key=os.path.getctime)
-        self.name=basename(self.path)
-        self.Image=Image.open(self.path)
-        self.watermark()
+        if len(list_of_files)>0:
+            self.path=max(list_of_files, key=os.path.getctime)
+            self.name=basename(self.path)
+            self.Image=Image.open(self.path)
+            self.watermark()
+        else:
+            self.path=''
+            self.name=''
 
     
     def isDarker(self,ISOmax):
@@ -251,7 +254,7 @@ class photo():
         width, height = self.Image.size
         transparent = Image.new('RGBA', (width, height), (0,0,0,0))
         transparent.paste(self.Image, (0,0))
-        transparent.paste(watermark, (SIZE[0]*RESOLUTION-watermark.size[0]-20,SIZE[1]*RESOLUTION-watermark.size[1]-40), mask=watermark)
+        #transparent.paste(watermark, (SIZE[0]*RESOLUTION-watermark.size[0]-20,SIZE[1]*RESOLUTION-watermark.size[1]-40), mask=watermark)
 
         self.Image2print=transparent
         transparent=transparent.resize((1620,1080))

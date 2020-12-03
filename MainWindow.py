@@ -235,7 +235,7 @@ class Ui_PhotoBooth(object):
         self.buttonExit.setShortcut(_translate("PhotoBooth", "Alt+Return"))
         self.warning.setText(_translate("PhotoBooth", "No warning/error"))
         self.countdown.setText(_translate("PhotoBooth", "10"))
-        self.lookUp.setText(_translate("PhotoBooth", "Regardez ici ☝"))
+        self.lookUp.setText(_translate("PhotoBooth", "☝ Regardez ici"))
         self.veilleButton.setText(_translate("PhotoBooth", "Toucher l\'écran pour démarrer"))
 
 

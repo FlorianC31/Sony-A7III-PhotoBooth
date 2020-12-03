@@ -40,7 +40,6 @@ class Thread(QThread):
             self.resolution=resolutions[ResolutionID]
             self.resolutionID=ResolutionID
             
-        
         self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
