@@ -5,6 +5,7 @@ Created on Sun Oct 11 13:18:11 2020
 @author: Florian CHAMPAIN
 """
 import sys,os,glob,win32gui
+#sys.coinit_flags = 2
 
 from MainWindow import Ui_PhotoBooth
 from Webcam import Thread
@@ -25,9 +26,13 @@ from ntpath import basename
 
 from datetime import datetime
 
+from ctypes import windll
 
 
-PHOTOFOLDER="E:\Python\Projets\Photobooth\Photos\\"
+
+
+
+PHOTOFOLDER=r"C:\Users\lord_\Documents\Photos_PhotoBooth\\"
 PICTYPE="JPG"
 DEVELOPERMODE=True
 
@@ -46,6 +51,7 @@ class PhotoBooth(Ui_PhotoBooth):
 
 
     def initUI(self):
+    
         self.full=False
         self.MainWindow = QtWidgets.QMainWindow()   
         self.setupUi(self.MainWindow)
@@ -100,6 +106,7 @@ class PhotoBooth(Ui_PhotoBooth):
                   
         
     def CloseWindow(self):
+        self.camera.close()
         self.StopCam()
         self.MainWindow.close()
         
@@ -130,7 +137,7 @@ class PhotoBooth(Ui_PhotoBooth):
     def ShowCam(self):
         #self.camView.setText(QtCore.QCoreApplication.translate("PhotoBooth", "654 photos restantes"))
         
-        
+
         self.veilleButton.hide()
         self.widgetPrint.hide()   
         self.widgetPhoto.show()    
@@ -140,7 +147,6 @@ class PhotoBooth(Ui_PhotoBooth):
         self.th.changePixmap.connect(self.setImage)
         self.th.init(self)
         self.th.start()
-        
         
         
         
