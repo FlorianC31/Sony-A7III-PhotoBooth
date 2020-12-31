@@ -62,12 +62,16 @@ class relais():
     def ON(self,SlotName):
         slotID=self.slot[SlotName]
         self.setRelay(self.getRelayID(slotID), True)
-        print("Relais "+str(slotID)+": ON")
+        time.sleep(0.005)
+        self.setRelay(self.getRelayID(slotID), True)
+        #print("Relais "+str(slotID)+": ON")
         
     def OFF(self,SlotName):
         slotID=self.slot[SlotName]
         self.setRelay(self.getRelayID(slotID), False)
-        print("Relais "+str(slotID)+": OFF")
+        time.sleep(0.005)
+        self.setRelay(self.getRelayID(slotID), False)
+        #print("Relais "+str(slotID)+": OFF")
         
     def close(self):
         self.device.close()

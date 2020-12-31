@@ -59,6 +59,18 @@ class Thread(QThread):
         self.duree=duree
 
 
+    def LaunchCam(self):
+        cv2.destroyAllWindows()
+        try:
+            self.cap.release()
+        except:
+            pass
+
+        self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
+
+
     def run(self):
         
         broken=0
@@ -66,27 +78,22 @@ class Thread(QThread):
         self.setResolution(1)
         
         while self.runing:
-            cv2.destroyAllWindows()
-            try:
-                self.cap.release()
-            except:
-                pass
-            
-            self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
-            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
-            
-    
+            self.LaunchCam()
     
             while self.runing:
                 ret, frame = self.cap.read()
                 if ret:
-                    
-                    #self.mainWindow.labelCompteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(frame.shape)))
-                    
-                    
+
+                    # Check if the picture is full black
+                    if self.IsBlack(frame) and not self.PhotoBooth.ct_active:
+                        self.LaunchCam()
+
                     # Mirror Flip
-                    frame = cv2.flip(frame, 1)  
+                    frame = cv2.flip(frame, 1)
+
+                    # Rotation 180°
+                    if self.PhotoBooth.ROTATE_180:
+                        frame = cv2.rotate(frame,cv2.cv2.ROTATE_180)
                     
                     # Crop
                     frame = frame[0:self.resolution[1], self.cropLeft:self.cropRight] 
@@ -123,6 +130,7 @@ class Thread(QThread):
     
     
                 else:
+                    print('Broken Frame')
                     broken+=1
                     brokenMsg=str(broken)+" broken frames"
                     self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", brokenMsg))
@@ -131,7 +139,15 @@ class Thread(QThread):
                     break
                 
     
-
+    def IsBlack(self,frame):
+        # Check if less than 10% of the picture is not black
+        greyFrame=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        if cv2.countNonZero(greyFrame)<self.resolution[0]*self.resolution[1]*0.1:
+            print("The image is full black")
+            return True
+        else:
+            #print('Image not black - countNonZero = ' + str(cv2.countNonZero(greyFrame)))
+            return False
         
                 
     def stop(self):

@@ -16,7 +16,7 @@ from relais import relais
 from PIL import Image, ExifTags
 from PIL.ImageQt import ImageQt
 
-from PyQt5.QtGui import QPixmap, QMovie
+from PyQt5.QtGui import QPixmap, QMovie, QTransform
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 
@@ -35,6 +35,8 @@ from ctypes import windll
 PHOTOFOLDER=r"C:\Users\lord_\Documents\Photos_PhotoBooth\\"
 PICTYPE="JPG"
 DEVELOPERMODE=True
+ROTATE_180=True
+WATERMARK=True
 
 
 
@@ -42,19 +44,24 @@ class PhotoBooth(Ui_PhotoBooth):
     def __init__(self):
         super(PhotoBooth, self).__init__()
         self.camera=Camera()
-        
-        
+        self.ROTATE_180=ROTATE_180
+
+        self.relais = relais(('light', 'fanPrinter', 'fanCam', ''))
+
         self.initUI()
         self.status=0
               
-        #self.relais=relais(('light','fanCam','fanPrinter',''))
+
 
 
     def initUI(self):
     
         self.full=False
-        self.MainWindow = QtWidgets.QMainWindow()   
+        self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
+
+        self.dark = False
+        self.ct_active = False
         
         self.movie = QMovie('ressources\Spinner-1s-400px_white.gif')
         self.loading.setMovie(self.movie)
@@ -106,6 +113,9 @@ class PhotoBooth(Ui_PhotoBooth):
                   
         
     def CloseWindow(self):
+        self.relais.OFF('light')
+        self.relais.OFF('fanCam')
+        self.relais.OFF('fanPrinter')
         self.camera.close()
         self.StopCam()
         self.MainWindow.close()
@@ -113,10 +123,8 @@ class PhotoBooth(Ui_PhotoBooth):
         
     def showPhoto(self):
         
-        
-        #pixmap = QPixmap(self.lastPhoto.path)
         pixmap=self.lastPhoto.QImage
-        #pixmap=pixmap.scaledToWidth(self.lastPhoto.width)       
+
         self.viewer.setPixmap(pixmap)
         
         self.widgetPhoto.hide()
@@ -126,6 +134,7 @@ class PhotoBooth(Ui_PhotoBooth):
         
 
     def StartCountdown(self):
+        self.ct_active = True
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '10'))
         self.countdown.show()
         self.buttonPhoto.hide()
@@ -135,13 +144,15 @@ class PhotoBooth(Ui_PhotoBooth):
 
 
     def ShowCam(self):
-        #self.camView.setText(QtCore.QCoreApplication.translate("PhotoBooth", "654 photos restantes"))
-        
 
         self.veilleButton.hide()
         self.widgetPrint.hide()   
         self.widgetPhoto.show()    
         self.lookUp.hide()
+
+        if self.dark:
+            self.relais.ON('light')
+        self.relais.ON('fanCam')
         
         self.th = Thread()
         self.th.changePixmap.connect(self.setImage)
@@ -161,9 +172,9 @@ class PhotoBooth(Ui_PhotoBooth):
         
         
     def TakePhoto(self):
-        
-        
-        
+
+        self.ct_active = False
+
         oldPic=photo()
         
         self.camera.Trigger()
@@ -176,16 +187,22 @@ class PhotoBooth(Ui_PhotoBooth):
         self.lastPhoto=photo()
         while self.lastPhoto.path==oldPic.path:
             self.lastPhoto=photo()
-            
+
+
         if self.lastPhoto.isDarker(1600):
-            pass #self.relais.ON('light')
-            
+            self.relais.ON('light')
+            self.dark=True
+        self.lastPhoto.watermark()
+
         self.showPhoto()
 
 
     def modeVeille(self):
         self.StopCam()
         self.veilleButton.show()
+        self.relais.OFF('light')
+        self.relais.OFF('fanCam')
+        self.relais.OFF('fanPrinter')
         
     def changeNbPrint(self, i):
         if i==0: # Init
@@ -196,8 +213,9 @@ class PhotoBooth(Ui_PhotoBooth):
 
         
     def send2printer(self):
+        self.relais.ON('fanPrinter')
         for i in range(self.nbPrint):
-            printer(self.lastPhoto)
+            printer(self.lastPhoto, self.ROTATE_180)
         self.setComptPrint(self.nbPrint)
         self.ShowCam()
         
@@ -231,11 +249,13 @@ class photo():
         self.height=1080
         self.folder=PHOTOFOLDER
         self.PicType=PICTYPE
-        list_of_files = glob.glob(self.folder + '*.' + self.PicType)
-        self.path=max(list_of_files, key=os.path.getctime)
-        self.name=basename(self.path)
-        self.Image=Image.open(self.path)
-        self.watermark()
+        try:
+            list_of_files = glob.glob(self.folder + '*.' + self.PicType)
+            self.path=max(list_of_files, key=os.path.getctime)
+            self.name=basename(self.path)
+            self.Image=Image.open(self.path)
+        except:
+            self.path=''
 
     
     def isDarker(self,ISOmax):
@@ -252,12 +272,18 @@ class photo():
         
         self.Image = Image.open(self.path)
         self.Image.thumbnail((SIZE[0]*RESOLUTION,SIZE[1]*RESOLUTION), Image.ANTIALIAS)
-        
-        watermark = Image.open(WATERMARK)
-        width, height = self.Image.size
-        transparent = Image.new('RGBA', (width, height), (0,0,0,0))
-        transparent.paste(self.Image, (0,0))
-        transparent.paste(watermark, (SIZE[0]*RESOLUTION-watermark.size[0]-20,SIZE[1]*RESOLUTION-watermark.size[1]-40), mask=watermark)
+
+        if ROTATE_180:
+            self.Image=self.Image.transpose(Image.ROTATE_180)
+
+        if WATERMARK:
+            watermark = Image.open(WATERMARK)
+            width, height = self.Image.size
+            transparent = Image.new('RGBA', (width, height), (0,0,0,0))
+            transparent.paste(self.Image, (0,0))
+            transparent.paste(watermark, (SIZE[0]*RESOLUTION-watermark.size[0]-20,SIZE[1]*RESOLUTION-watermark.size[1]-40), mask=watermark)
+        else:
+            transparent.paste(self.Image, (0, 0))
 
         self.Image2print=transparent
         transparent=transparent.resize((1620,1080))
@@ -272,3 +298,7 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     PhotoBooth=PhotoBooth()
     sys.exit(app.exec_())
+
+    #test_photo=photo()
+    #test_photo.folder='/home/florian/Téléchargements/onedrive/docs/images'
+    #print(test_photo.isDarker(1600))

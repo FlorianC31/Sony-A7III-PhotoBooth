@@ -34,7 +34,7 @@ PHYSICALOFFSETX = 112
 PHYSICALOFFSETY = 113
 
 
-def printer(photo):
+def printer(photo,rotate=False):
 
     printer_name = win32print.GetDefaultPrinter ()
     #photo = "Noël2019-095.jpg"
@@ -70,7 +70,8 @@ def printer(photo):
     
     #if bmp.size[0] < bmp.size[1]:
     #    bmp.resize(bmp.size[1]/2,bmp.size[0]/2)
-    #    bmp = bmp.rotate (90)
+    if rotate:
+        bmp = bmp.rotate (180)
       
 
     

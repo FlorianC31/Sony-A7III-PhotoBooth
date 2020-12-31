@@ -23,3 +23,4 @@ for i in range(10):
     time.sleep(0.995)
 time.sleep(3) 
 relais.OFF('fanCam')
+relais.OFF('fanPrinter')
