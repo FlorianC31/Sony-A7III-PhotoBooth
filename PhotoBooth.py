@@ -18,7 +18,7 @@ from PIL.ImageQt import ImageQt
 
 from PyQt5.QtGui import QPixmap, QMovie, QTransform
 from PyQt5 import QtWidgets
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtGui
 
 import pythoncom
 
@@ -37,6 +37,7 @@ PICTYPE="JPG"
 DEVELOPERMODE=True
 ROTATE_180=True
 WATERMARK=True
+SCALE=1.5
 
 
 
@@ -59,6 +60,9 @@ class PhotoBooth(Ui_PhotoBooth):
         self.full=False
         self.MainWindow = QtWidgets.QMainWindow()
         self.setupUi(self.MainWindow)
+
+        if SCALE!=1:
+            self.SetScale()
 
         self.dark = False
         self.ct_active = False
@@ -83,6 +87,7 @@ class PhotoBooth(Ui_PhotoBooth):
         
         self.getComptPrint()
 
+
         self.MainWindow.show()
         self.ShowCam()
         
@@ -92,9 +97,66 @@ class PhotoBooth(Ui_PhotoBooth):
         else:            
             self.widgetDevelopper.hide()
         self.fullScreen()
-    
-    
-    #@pyqtSlot(QImage)
+
+
+    def SetScale(self):
+        font = QtGui.QFont()
+        font.setFamily("Amatic")
+        font.setPointSize(20)
+        font.setBold(True)
+        #font.setWeight(75)
+        font.setPointSize(int(round(75 / SCALE, 0)))
+        self.MainWindow.setFont(font)
+        self.MainWindow.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+
+        #font.setPointSize(36)
+        font.setPointSize(int(round(36 / SCALE, 0)))
+        self.compteur.setFont(font)
+
+        #font.setPointSize(100)
+        font.setPointSize(int(round(100 / SCALE, 0)))
+        self.nbPrintLabel.setFont(font)
+
+        font = QtGui.QFont()
+        font.setFamily("Amatic")
+        font.setPointSize(60)
+        font.setBold(True)
+        #font.setWeight(75)
+        font.setPointSize(int(round(75 / SCALE, 0)))
+        self.buttonIncrease.setFont(font)
+
+        font = QtGui.QFont()
+        #font.setPointSize(72)
+        font.setPointSize(int(round(72 / SCALE, 0)))
+        self.buttonPrinter.setFont(font)
+        self.buttonRestart.setFont(font)
+        self.buttonCancel.setFont(font)
+        self.buttonPhoto.setFont(font)
+        font.setFamily("Amatic")
+        self.veilleButton.setFont(font)
+
+        font = QtGui.QFont()
+        font.setFamily("Amatic")
+        #font.setPointSize(60)
+        font.setPointSize(int(round(60 / SCALE, 0)))
+        font.setBold(True)
+        font.setWeight(75)
+        self.buttonDecrease.setFont(font)
+
+        font = QtGui.QFont()
+        #font.setPointSize(500)
+        font.setPointSize(int(round(500 / SCALE, 0)))
+        self.countdown.setFont(font)
+
+        font = QtGui.QFont()
+        #font.setPointSize(160)
+        font.setPointSize(int(round(160 / SCALE, 0)))
+        self.lookUp.setFont(font)
+
+
+
+
+#@pyqtSlot(QImage)
     def setImage(self, image):
         self.camView.setPixmap(QPixmap.fromImage(image))
     
@@ -224,14 +286,14 @@ class PhotoBooth(Ui_PhotoBooth):
         file1 = open("compteur.txt","r")
         self.comptPrint=int(file1.read())
         file1.close
-        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+' photos restantes'))
+        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+'\nphotos\nrestantes'))
 
     def setComptPrint(self,n):
         self.comptPrint-=n
         file1 = open("compteur.txt","w")
         file1.write(str(self.comptPrint))
         file1.close
-        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+' photos restantes'))
+        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+'\nphotos\nrestantes'))
         
         file2 = open("Printlog.csv","a")
         line=[]
