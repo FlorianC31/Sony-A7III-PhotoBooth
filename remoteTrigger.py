@@ -206,7 +206,6 @@ class Camera:
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        print(self.RemoteWindow.is_pre_remote())
         self.RemoteWindow.set_x_init()
 
         self.close_liveview()
@@ -215,13 +214,16 @@ class Camera:
         # self.chek_connect_th.start()
 
     def close_liveview(self):
-        self.ImagingWindow.show()
-        self.RemoteWindow.show()
-        time.sleep(1)
-        keyboard.press('Ctrl')
-        keyboard.press('l')
-        keyboard.release('l')
-        keyboard.release('Ctrl')
+        rect = win32gui.GetWindowRect(self.RemoteWindow.get_hwnd())
+        width = int((rect[2] - rect[0]) / self.scale)
+        if width > 500:
+            self.ImagingWindow.show()
+            self.RemoteWindow.show()
+            time.sleep(1)
+            keyboard.press('Ctrl')
+            keyboard.press('l')
+            keyboard.release('l')
+            keyboard.release('Ctrl')
 
     def chek_connect(self):
         while not self.RemoteWindow.is_disconet_msg() and self.running:

@@ -251,10 +251,12 @@ class PhotoBooth(Ui_PhotoBooth):
         # print(cam_thread)
         self.camView.clear()
         self.widgetPhoto.hide()  
-        if self.cam_thread:
+        try:
             self.cam_thread.stop()
             self.cam_thread.quit()
             del self.cam_thread
+        except AttributeError:
+            pass
         print("Closing")
         # print(cam_thread)
         
