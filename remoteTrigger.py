@@ -3,176 +3,237 @@ import time
 import win32com.client
 import win32gui
 import pywinauto
-import os, sys
+import os
+import sys
+
+from threading import Thread
 
 
-
-class Window():
-    def __init__(self,WindowName):
-        self.name=WindowName
+class Window:
+    def __init__(self, window_name, scale=1):
+        self.name = window_name
+        self.scale = scale
+        self.x_init = 0
         
-    def isOpen(self):
-        return self.getHwnd()>0
-        
-       
-    def Show(self):
-        if self.isOpen():
+    def is_open(self):
+        return self.get_hwnd() > 0
+
+    def show(self):
+        if self.is_open():
             shell = win32com.client.Dispatch("WScript.Shell")
             shell.SendKeys('%')
-            while not self.isFocus():
+            while not self.is_focus():
                 time.sleep(0.1)
-                win32gui.SetForegroundWindow(self.getHwnd())
+                win32gui.SetForegroundWindow(self.get_hwnd())
         else:
-            print('ERROR:',self.name,'is not opened')
+            print('ERROR: Enable to show ', self.name, ' because it is not opened')
             sys.exit(1)
-            
-        
-    def getHwnd(self):
+
+    def get_hwnd(self):
         return win32gui.FindWindow(None, self.name)
-        
 
+    def x_move(self, x, absolute=True):
+        if self.is_open():
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            width = rect[2] - rect[0]
+            height = rect[3] - rect[1]
+            if absolute:
+                win32gui.MoveWindow(self.get_hwnd(), x, rect[1], width, height, True)
+            else:
+                win32gui.MoveWindow(self.get_hwnd(), rect[0] + x, rect[1], width, height, True)
+
+    def y_move(self, y, absolute=True):
+        if self.is_open():
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            width = rect[2] - rect[0]
+            height = rect[3] - rect[1]
+            if absolute:
+                win32gui.MoveWindow(self.get_hwnd(), rect[0], y, width, height, True)
+            else:
+                win32gui.MoveWindow(self.get_hwnd(), rect[0], rect[1] + y, width, height, True)
+
+    def resize(self, w, h):
+        if self.is_open():
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            win32gui.MoveWindow(self.get_hwnd(), rect[0], rect[1], w, h, True)
+
+    def click(self, x_relative, y_relative, double_click=False):
+        if self.is_open():
+            self.show()
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            x = rect[0] + int(x_relative * self.scale)
+            y = rect[1] + int(y_relative * self.scale)
+            print(rect)
     
-    def Move(self,X,delta=False):
-        rect = win32gui.GetWindowRect(self.getHwnd())
-        if delta:
-            win32gui.MoveWindow(self.getHwnd(), rect[0] + X, rect[1], rect[2]+X, rect[3], True)
-        else:
-            win32gui.MoveWindow(self.getHwnd(), X, rect[1], X, rect[3], True)
-    
-    def Click(self,Xrelative,Yrelative,doubleClick=False):
-        if self.isOpen():
-            self.Show()
-            rect = win32gui.GetWindowRect(self.getHwnd())
-    
-            pywinauto.mouse.click(button='left', coords=(rect[0]+Xrelative, rect[1]+Yrelative))
-    
-            if doubleClick:
-                time.sleep(0.3)
-                pywinauto.mouse.click(button='left', coords=(rect[0]+Xrelative, rect[1]+Yrelative))
+            if double_click:
+                pywinauto.mouse.double_click(button='left', coords=(x, y))
+            else:
+                pywinauto.mouse.click(button='left', coords=(x, y))
 
         else:
-            print('ERROR:',self.name,'is not opened')
+            print('ERROR:', self.name, 'is not opened')
             sys.exit(1)
-    
 
-    def isFocus(self):
-        return win32gui.GetForegroundWindow()==self.getHwnd()
+    def is_focus(self):
+        return win32gui.GetForegroundWindow() == self.get_hwnd()
+
+    def set_x_init(self):
+        rect = win32gui.GetWindowRect(self.get_hwnd())
+        self.x_init = rect[0]
     
     
 class Remote(Window):
-    
-    def isPreRemote(self):
-        try:
-            rect=win32gui.GetWindowRect(self.getHwnd())
-            return rect[2]-rect[0]==930 and rect[3]-rect[1]==376
-        except:
+
+    def is_disconet_msg(self):
+        return self.check_size(427, 173)
+
+    def is_pre_remote(self):
+        return self.check_size(930, 376)
+
+    def check_size(self, w, h):
+        rect = win32gui.GetWindowRect(self.get_hwnd())
+        width = int((rect[2] - rect[0]) / self.scale)
+        height = int((rect[3] - rect[1]) / self.scale)
+        if rect:
+            return w - 1 < width < w + 1 and h - 1 < height < h + 1
+        else:
             return False
 
-    def isDisconetMsg(self):
-        try:
-            rect=win32gui.GetWindowRect(self.getHwnd())
-            return rect[2]-rect[0]==427 and  rect[3]-rect[1]==159
-        except:
-            return False
-    
-    
-    def AgreeDisconect(self):
-        self.Click(354,132)
+    def acknowledge_disconect(self):
+        self.click(354, 132)
         time.sleep(0.1)
     
-    def Close(self):
-        self.Click(841,340)
+    def close(self):
+        self.click(841, 340)
         
-    def Refresh(self):
-        self.Click(712,340)
+    def refresh(self):
+        self.click(712, 340)
         time.sleep(5)
         
-    def LaunchCam(self):
-        
+    def launch_cam(self):
         time.sleep(2)
         
         # Wait for the camera is available
-        while self.isDisconetMsg():
-            self.AgreeDisconect()
-            self.Refresh()
-
+        while self.is_disconet_msg():
+            self.acknowledge_disconect()
+            self.refresh()
+            time.sleep(1)
 
         # launch of the final Remote Window
-        while self.isPreRemote():
-            self.Click(89,78,True)
+        while self.is_pre_remote():
+            self.click(89, 78, True)
             time.sleep(3)
             keyboard.press('Enter')
             time.sleep(0.2)
             keyboard.release('Enter')
 
-        
-    def isOperationnal(self):
-        a=self.isOpen()
-        b=not self.isPreRemote()
-        c=not self.isDisconetMsg()
-        return a and b and c
-
-        
-        
-    
+    def is_operationnal(self):
+        cond_a = self.is_open()
+        cond_b = not self.is_pre_remote()
+        cond_c = not self.is_disconet_msg()
+        return cond_a and cond_b and cond_c
 
 
 class Camera:
-    def __init__(self):
-        
-        self.PhotoBoothWindow=Window("PhotoBooth")
-        self.ImagingWindow=Window("Imaging Edge Desktop")
-        self.RemoteWindow=Remote("Remote")
-        self.ViewerWindow=Remote("Viewer")
-        
-        self.Launch()
-        self.RemoteWindow.Move(3000,True)
-        if self.ViewerWindow.isOpen():
-            self.ViewerWindow.Move(3000,True)
+    def __init__(self, scale):
+        self.PhotoBoothWindow = Window("PhotoBooth", scale)
+        self.ImagingWindow = Window("Imaging Edge Desktop", scale)
+        self.RemoteWindow = Remote("Remote", scale)
+        self.ViewerWindow = Remote("Viewer", scale)
 
+        self.scale = scale
+
+        self.chek_connect_th = None
+        self.launch()
+        self.running = True
+
+        if self.ViewerWindow.is_open():
+            self.ViewerWindow.close()
 
     def close(self):
-        self.RemoteWindow.Move(300)
-        if self.ViewerWindow.isOpen():
-            self.ViewerWindow.Move(300)
+        self.RemoteWindow.x_move(self.RemoteWindow.x_init)
+        if self.ViewerWindow.is_open():
+            self.ViewerWindow.x_move(300)
+        self.running = False
 
+    def trigger(self):
+        if self.ViewerWindow.is_open():
+            self.ViewerWindow.close()
 
-    def Trigger(self):
-
-        self.RemoteWindow.Show()
+        self.RemoteWindow.x_move(6000, False)
+        self.RemoteWindow.show()
 
         keyboard.press('&')
         time.sleep(2)
         keyboard.release('&')
         
-        self.PhotoBoothWindow.Show()
+        self.PhotoBoothWindow.show()
+        self.RemoteWindow.x_move(self.RemoteWindow.x_init)
 
-        
-
-        
-        
-    def Launch(self):
-        
+    def launch(self):
+        while self.chek_connect_th:
+            print("Le thread tourne encore")
         # Open the main Imaging Edge programm
-        if not self.ImagingWindow.isOpen():
-            os.popen("C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
-            while not self.ImagingWindow.isOpen():
-                pass
+        nb_iter = 1
+        if not self.ImagingWindow.is_open():
+            print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
+            os.popen(r"C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
+            while not self.ImagingWindow.is_open():
+                time.sleep(1)
+                nb_iter += 1
+                print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
+            print("Imagine Edge Desktop est ouvert")
+
+        if not self.RemoteWindow.is_open():
             time.sleep(1)
-            
-        if not self.RemoteWindow.isOpen():
-            self.ImagingWindow.Click(665,160)
-            while not self.RemoteWindow.isOpen():
+
+            while not self.ImagingWindow.is_focus():
+                self.ImagingWindow.show()
                 time.sleep(1)
 
+            nb_iter = 1
+            print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+            self.ImagingWindow.click(665, 160)
+            while not self.RemoteWindow.is_open():
+                time.sleep(1)
+                nb_iter += 1
+                print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+            print("Remote Window est ouvert")
         
         # If the Remote application can not find the Camera and send an error message
-        if not self.RemoteWindow.isOperationnal():
-            self.RemoteWindow.LaunchCam()
+        time.sleep(2)
+        if not self.RemoteWindow.is_operationnal():
+            print("APN pas encore opérationnel")
+            self.RemoteWindow.launch_cam()
 
-             
-             
+        print(self.RemoteWindow.is_pre_remote())
+        self.RemoteWindow.set_x_init()
+
+        self.close_liveview()
+
+        self.chek_connect_th = Thread(target=self.chek_connect)
+        # self.chek_connect_th.start()
+
+    def close_liveview(self):
+        self.ImagingWindow.show()
+        self.RemoteWindow.show()
+        time.sleep(1)
+        keyboard.press('Ctrl')
+        keyboard.press('l')
+        keyboard.release('l')
+        keyboard.release('Ctrl')
+
+    def chek_connect(self):
+        while not self.RemoteWindow.is_disconet_msg() and self.running:
+            # print("Thread de check en cours")
+            time.sleep(5)
+        if self.running:
+            self.launch()
+
+
 if __name__ == '__main__':
-    Camera=Camera()
-    time.sleep(5)
-    Camera.close()
+    # RemoteWindow = Remote("Remote", 1.5)
+    # RemoteWindow.x_move(300)
+
+    test_camera = Camera(1.5)
+    # print(test_camera.is_disconet_msg())

@@ -1,0 +1,2 @@
+python PhotoBooth.py
+pause

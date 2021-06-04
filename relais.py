@@ -6,115 +6,115 @@ Created on Thu Sep 17 14:47:36 2020
 """
 
 import ftd2xx as ft
-import time, sys
+import time
+import sys
+
+MAXITER = 4
 
 
-class relais():
+class Relais:
     """Exception class for status messages"""
-    def __init__(self,name):
-        
-        self.init(0)
-        self.slot={}
-        
-        i=1
+    def __init__(self, name):
+
+        self.device = None
+        self.connect(1)
+        self.slot = {}
+
+        i = 1
         for n in name:
-            self.slot[n]=i
-            i+=1
-                
+            self.slot[n] = i
+            i += 1
 
-    def init(self,iter):
-        
-        MAXITER=4
-        
-        print("Tentative de connexion "+str(iter+1)+"/"+str(MAXITER))
-        if iter<MAXITER:
+        self.running = True
+
+    def connect(self, iter):
+
+        print("Tentative de connexion " + str(iter) + "/" + str(MAXITER))
+
+        if iter < MAXITER:
+            print('Flag1')
             try:
-                print
                 self.device = ft.open(0)
-                self.device.setBitMode(0xFF, 0x01) # IMPORTANT TO HAVE: This sets up the FTDI device as "Bit Bang" mode.
-            except:
-                time.sleep(4) # Wait 4 seconds
-                self.init(iter+1)
+                self.device.setBitMode(0xFF, 0x01)  # IMPORTANT TO HAVE: This sets up the FTDI device as "Bit Bang" mode
+            except Exception as e:
+                if e.message == 'DEVICE_NOT_FOUND':
+                    time.sleep(4)  # Wait 4 seconds
+                    self.connect(iter + 1)
+                else:
+                    print(e.message)
+                    sys.exit(1)
         else:
-            print('Impossible de se connectr à la carte relais, vérifier les connexions')
-            sys.exit(0)
-        
+            print('Impossible de se connecter à la carte relais, vérifier les connexions')
+            sys.exit(1)
 
+        print('Flag2')
 
-    def setRelay(self, relay, state):
-        relayStates = self.device.getBitMode() # Get the current state of the relays
+    def set_relay(self, relay, state):
+        relay_states = self.device.getBitMode()  # Get the current state of the relays
 
         if state:
-            newRelayStates=relayStates | relay
+            new_relay_states = relay_states | relay
         else:
-            newRelayStates=relayStates & ~relay
+            new_relay_states = relay_states & ~relay
         
-        if newRelayStates==0:
+        if new_relay_states == 0:
             self.device.write('0')
         else:
-            self.device.write(chr(newRelayStates))
-            
+            self.device.write(chr(new_relay_states))
 
-    def getDeviceInfo(self):
-        print(self.device.getDeviceInfo())
+    def get_device_info(self):
+        print(self.device.get_device_info())
         
-        
-    def ON(self,SlotName):
-        slotID=self.slot[SlotName]
-        self.setRelay(self.getRelayID(slotID), True)
+    def on(self, slot_name):
+        slot_id = self.slot[slot_name]
+        self.set_relay(self.get_relay_id(slot_id), True)
         time.sleep(0.005)
-        self.setRelay(self.getRelayID(slotID), True)
-        #print("Relais "+str(slotID)+": ON")
+        self.set_relay(self.get_relay_id(slot_id), True)
+        print("Relais "+str(slot_id)+": ON")
         
-    def OFF(self,SlotName):
-        slotID=self.slot[SlotName]
-        self.setRelay(self.getRelayID(slotID), False)
+    def off(self, slot_name):
+        slot_id = self.slot[slot_name]
+        self.set_relay(self.get_relay_id(slot_id), False)
         time.sleep(0.005)
-        self.setRelay(self.getRelayID(slotID), False)
-        #print("Relais "+str(slotID)+": OFF")
+        self.set_relay(self.get_relay_id(slot_id), False)
+        print("Relais "+str(slot_id)+": OFF")
         
     def close(self):
+        self.running = False
+        for s in self.slot:
+            self.off(s)
         self.device.close()
-        
-    def getRelayID(self,ID):
-        return 2**(ID-1)
-    
+
+    @staticmethod
+    def get_relay_id(id):
+        return 2**(id - 1)
     
     def reinit(self):
         self.device.write('0')
         
     def test(self):
         
-        for i in range(1,5):
-            relais.ON(i)
-            time.sleep(.5) # Wait 0.5 seconds
+        for i in range(1, 5):
+            self.on(i)
+            time.sleep(.5)  # Wait 0.5 seconds
             
-        for i in range(1,5):
-            relais.OFF(i)
-            time.sleep(.5) # Wait 0.5 seconds
+        for i in range(1, 5):
+            self.off(i)
+            time.sleep(.5)  # Wait 0.5 seconds
 
-    '''
-    def focus(self,t):
-        self.ON('focus')
-        time.sleep(t)
-        self.OFF('focus')
-        
-    def trigger(self):
-        self.ON('focus')
-        time.sleep(1)
-        self.ON('photo')
-        time.sleep(0.3)
-        self.OFF('focus')
-        self.OFF('photo')
-        
 
 if __name__ == '__main__':
-    
-    relais=relais()
-    relais.trigger()
-    
-    #relais.test()
-    #relais.focus(1)
-    
-    relais.close()
-'''
+
+    relais = Relais(('relais1', 'relais2', 'relais3', 'relais4'))
+
+    relais.on('relais1')
+    relais.on('relais2')
+    relais.on('relais3')
+    relais.on('relais4')
+
+    time.sleep(5)
+
+    relais.off('relais1')
+    relais.off('relais2')
+    relais.off('relais3')
+    relais.off('relais4')

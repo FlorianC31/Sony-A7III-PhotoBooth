@@ -12,7 +12,7 @@ from PIL import Image, ImageWin
 import sys,os,glob,win32gui
 
 from MainWindow import Ui_PhotoBooth
-from Webcam import Thread
+from Webcam import CamThread
 from remoteTrigger import Camera
 from printer import printer
 #from relais import relais

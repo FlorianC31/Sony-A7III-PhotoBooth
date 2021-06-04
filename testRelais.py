@@ -1,26 +1,26 @@
-from relais import relais
+from relais import Relais
 import time
 
-relais=relais(('light','fanCam','fanPrinter',''))
+relais=Relais(('light', 'fanCam', 'fanPrinter', ''))
 
 
-relais.ON('light')
+relais.on('light')
 time.sleep(0.005)
-relais.ON('light')
-relais.OFF('fanPrinter')
+relais.on('light')
+relais.off('fanPrinter')
 time.sleep(5)
 
 for i in range(10):
-    relais.ON('light')
+    relais.on('light')
     time.sleep(0.005)
-    relais.ON('light')
-    relais.OFF('fanCam')
+    relais.on('light')
+    relais.off('fanCam')
     time.sleep(0.995)
-    relais.OFF('light')
+    relais.off('light')
     time.sleep(0.005)
-    relais.OFF('light')
-    relais.ON('fanCam')
+    relais.off('light')
+    relais.on('fanCam')
     time.sleep(0.995)
 time.sleep(3) 
-relais.OFF('fanCam')
-relais.OFF('fanPrinter')
+relais.off('fanCam')
+relais.off('fanPrinter')

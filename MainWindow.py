@@ -259,8 +259,8 @@ class Ui_PhotoBooth(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    PhotoBooth = QtWidgets.QWidget()
+    new_photobooth = QtWidgets.QWidget()
     ui = Ui_PhotoBooth()
-    ui.setupUi(PhotoBooth)
-    PhotoBooth.show()
+    ui.setupUi(new_photobooth)
+    new_photobooth.show()
     sys.exit(app.exec_())

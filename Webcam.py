@@ -11,55 +11,45 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QImage
 from datetime import datetime
 
-class Thread(QThread):
+
+class CamThread(QThread):
     changePixmap = pyqtSignal(QImage)
-    
-    
-    def init(self,PhotoBooth):
+
+    def __init__(self, photobooth):
+        super(CamThread, self).__init__()
+
         cv2.destroyAllWindows()
-        self.PhotoBooth=PhotoBooth
-        self.setResolution(1)
-        self.cdRunning=False
-        self.StartTime=datetime.now()
-        
-    def ChangeResolution(self):
-        resolutionID=self.resolutionID+1
-        if resolutionID==3:
-            resolutionID=0
-        self.setResolution(resolutionID)
-                
-        
-    def setResolution(self,ResolutionID):
-        
-        resolutions=((1920,1080),(1280,720),(640,360))
-        
-        if ResolutionID=='old':
-            self.resolution=resolutions[self.oldResolutionID]
-            self.resolutionID=self.oldResolutionID
-        else:
-            self.resolution=resolutions[ResolutionID]
-            self.resolutionID=ResolutionID
-            
-        
+        self.PhotoBooth = photobooth
+        self.set_resolution(1)
+        self.cdRunning = False
+        self.StartTime = datetime.now()
+        self.runing = False
+        self.changePixmap.connect(photobooth.set_image)
+
+        self.resolution = None
+        self.cap = None
+        self.cropLeft = None
+        self.cropRight = None
+
+    def set_resolution(self, resolution_id):
+
+        resolutions = ((1920, 1080), (1280, 720), (640, 360))
+        self.resolution = resolutions[resolution_id]
+
         self.cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
-        
-        self.cropLeft=int((1920-1620)/(2*1920)*self.resolution[0])
-        self.cropRight=int((1-(1920-1620)/(2*1920))*self.resolution[0])
-        
-        #self.mainWindow.ButtonResolution.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.resolution)))
-        
-    
-    
-    def StartCountdown(self,duree):
-        self.cdStart=datetime.now()
-        self.cdRunning=True
-        self.cdValue=-1
-        self.duree=duree
 
+        self.cropLeft = int((1920-1620) / (2*1920) * self.resolution[0])
+        self.cropRight = int((1-(1920-1620) / (2*1920)) * self.resolution[0])
+        
+    def start_countdown(self, duree):
+        self.cdStart = datetime.now()
+        self.cdRunning = True
+        self.cdValue = -1
+        self.duree = duree
 
-    def LaunchCam(self):
+    def launch_cam(self):
         cv2.destroyAllWindows()
         try:
             self.cap.release()
@@ -70,89 +60,78 @@ class Thread(QThread):
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
 
-
     def run(self):
         
-        broken=0
-        self.runing=True
-        self.setResolution(1)
-        
+        broken = 0
+        self.runing = True
+        self.set_resolution(1)
+
+        self.launch_cam()
+
         while self.runing:
-            self.LaunchCam()
-    
-            while self.runing:
-                ret, frame = self.cap.read()
-                if ret:
+            ret, frame = self.cap.read()
+            if ret:
 
-                    # Check if the picture is full black
-                    if self.IsBlack(frame) and not self.PhotoBooth.ct_active:
-                        self.LaunchCam()
+                # Check if the picture is full black
+                if self.is_black(frame) and not self.PhotoBooth.photo_countdown:
+                    self.launch_cam()
 
-                    # Mirror Flip
-                    frame = cv2.flip(frame, 1)
+                # Mirror Flip
+                frame = cv2.flip(frame, 1)
 
-                    # Rotation 180°
-                    if self.PhotoBooth.ROTATE_180:
-                        frame = cv2.rotate(frame,cv2.cv2.ROTATE_180)
-                    
-                    # Crop
-                    frame = frame[0:self.resolution[1], self.cropLeft:self.cropRight] 
-                    
-                    # Resize
-                    if self.resolutionID>0:
-                        frame = cv2.resize(frame,(1620,1080),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
-                    
-                    
-                    if self.cdRunning:
-                        duree=datetime.now()-self.cdStart
-                        if duree.seconds>self.cdValue:
-                            self.cdValue=duree.seconds
-                            self.PhotoBooth.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.duree-self.cdValue-1)))
-                        if duree.seconds==self.duree-3:
-                            self.PhotoBooth.countdown.hide()
-                            self.PhotoBooth.lookUp.show()
-                        if duree.seconds==self.duree-2:
-                            self.PhotoBooth.TakePhoto()
-                    else:
-                        duree=datetime.now()-self.StartTime
-                        if duree.seconds>=60:
-                            self.PhotoBooth.modeVeille()
+                # Rotation 180°
+                if self.PhotoBooth.ROTATE_180:
+                    frame = cv2.rotate(frame, cv2.cv2.ROTATE_180)
 
-                    
+                # Crop
+                frame = frame[0:self.resolution[1], self.cropLeft:self.cropRight]
 
-                    # Send to Qt
-                    rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                    h, w, ch = rgbImage.shape
-                    bytesPerLine = ch * w
-                    convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
-                    self.changePixmap.emit(convertToQtFormat)
+                # Resize
+                if self.resolution[1] < 1920:
+                    frame = cv2.resize(frame, (1620, 1080), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
 
-    
-    
-                else:
-                    print('Broken Frame')
-                    broken+=1
-                    brokenMsg=str(broken)+" broken frames"
-                    self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", brokenMsg))
-                    self.Photobooth.warning.show()
-                    self.cap.release()
-                    break
-                
-    
-    def IsBlack(self,frame):
+                if self.cdRunning:
+                    duree = datetime.now()-self.cdStart
+                    if duree.seconds > self.cdValue:
+                        self.cdValue = duree.seconds
+                        self.PhotoBooth.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.duree-self.cdValue-1)))
+                    if duree.seconds == self.duree-3:
+                        self.PhotoBooth.countdown.hide()
+                        self.PhotoBooth.lookUp.show()
+                    if duree.seconds == self.duree-2:
+                        self.PhotoBooth.take_photo()
+
+                # Send to Qt
+                rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                h, w, ch = rgb_image.shape
+                bytes_per_line = ch * w
+                convert_to_qt_format = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format_RGB888)
+                self.changePixmap.emit(convert_to_qt_format)
+
+            else:
+                print('Broken Frame')
+                broken += 1
+                broken_msg = str(broken)+" broken frames"
+                self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", broken_msg))
+                self.Photobooth.warning.show()
+                self.cap.release()
+                break
+
+    def is_black(self, frame):
         # Check if less than 10% of the picture is not black
-        greyFrame=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        if cv2.countNonZero(greyFrame)<self.resolution[0]*self.resolution[1]*0.1:
+        grey_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        if cv2.countNonZero(grey_frame) < self.resolution[0] * self.resolution[1]*0.1:
             print("The image is full black")
             return True
         else:
-            #print('Image not black - countNonZero = ' + str(cv2.countNonZero(greyFrame)))
             return False
-        
                 
     def stop(self):
-        self.changePixmap.disconnect()
-        self.runing=False
+        try:
+            self.changePixmap.disconnect()
+        except:
+           pass
+        self.runing = False
         self.cap.release()
         cv2.destroyAllWindows()
-        del(self)
+        # del self

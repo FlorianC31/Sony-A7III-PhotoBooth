@@ -4,14 +4,16 @@ Created on Sun Oct 11 13:18:11 2020
 
 @author: Florian CHAMPAIN
 """
-import sys,os,glob,win32gui
-#sys.coinit_flags = 2
+import sys
+import os
+import glob
+import win32gui
 
 from MainWindow import Ui_PhotoBooth
-from Webcam import Thread
+from Webcam import CamThread
 from remoteTrigger import Camera
 from printer import printer
-from relais import relais
+from relais import Relais
 
 from PIL import Image, ExifTags
 from PIL.ImageQt import ImageQt
@@ -22,98 +24,112 @@ from PyQt5 import QtCore, QtGui
 
 import pythoncom
 
+from CPU_temp import upper_fan_controller
+
 from ntpath import basename
 
 from datetime import datetime
+from time import sleep
 
 from ctypes import windll
 
+from threading import Thread
 
+PHOTOFOLDER = r"C:\Photos_PhotoBooth\\"
+PICTYPE = "JPG"
+DEVELOPERMODE = False
+ROTATE_180 = True
+WATERMARK = True
+SCALE = 1.5
 
-
-
-PHOTOFOLDER=r"C:\Users\lord_\Documents\Photos_PhotoBooth\\"
-PICTYPE="JPG"
-DEVELOPERMODE=True
-ROTATE_180=True
-WATERMARK=True
-SCALE=1.5
-
+WTMRK = r"ressources\logo_blanc_sur_transparent.png"
+SIZE = (6, 4)  # in inch
+RESOLUTION = 300  # ppi
 
 
 class PhotoBooth(Ui_PhotoBooth):
-    def __init__(self):
+    def __init__(self, app):
         super(PhotoBooth, self).__init__()
-        self.camera=Camera()
-        self.ROTATE_180=ROTATE_180
 
-        self.relais = relais(('light', 'fanPrinter', 'fanCam', ''))
-
-        self.initUI()
-        self.status=0
-              
-
-
-
-    def initUI(self):
-    
-        self.full=False
-        self.MainWindow = QtWidgets.QMainWindow()
-        self.setupUi(self.MainWindow)
-
-        if SCALE!=1:
-            self.SetScale()
+        self.app = app
 
         self.dark = False
-        self.ct_active = False
-        
-        self.movie = QMovie('ressources\Spinner-1s-400px_white.gif')
+        self.photo_countdown = False
+        self.veille_countdown = False
+        self.fullscreen = False
+
+        self.action_done = False
+
+        self.movie = QMovie(r'ressources\Spinner-1s-400px_white.gif')
+
+        self.camera = Camera(SCALE)
+        self.ROTATE_180 = ROTATE_180
+
+        self.relais = Relais(('light', 'fanPrinter', 'fanCam', ''))
+
+        self.cam_thread = None
+        self.lastPhoto = None
+
+        self.veille_th = None
+
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.status = 0
+        self.nbPrint = 0
+        self.comptPrint = 0
+        self.init_ui()
+
+        self.printer_fan_thread = None
+        self.upper_fan_th = Thread(target=upper_fan_controller, args=[self.relais])
+        self.upper_fan_th.start()
+
+    def init_ui(self):
+
+        self.setupUi(self.MainWindow)
+
+        if SCALE != 1:
+            self.set_scale()
+
         self.loading.setMovie(self.movie)
         self.movie.start()
         
-        self.buttonExit.clicked.connect(lambda:self.CloseWindow())
-        self.buttonRestart.clicked.connect(lambda:self.ShowCam())
-        self.buttonPrinter.clicked.connect(lambda:self.send2printer())
-        self.buttonDecrease.clicked.connect(lambda:self.changeNbPrint(-1))
-        self.buttonIncrease.clicked.connect(lambda:self.changeNbPrint(1))
-        self.buttonCancel.clicked.connect(lambda:self.modeVeille())     
-        self.veilleButton.clicked.connect(lambda:self.ShowCam()) 
-        self.buttonPhoto.clicked.connect(lambda:self.StartCountdown())  
+        self.buttonExit.clicked.connect(lambda: self.close_window())
+        self.buttonRestart.clicked.connect(lambda: self.show_cam())
+        self.buttonPrinter.clicked.connect(lambda: self.send2printer())
+        self.buttonDecrease.clicked.connect(lambda: self.change_nb_print(-1))
+        self.buttonIncrease.clicked.connect(lambda: self.change_nb_print(1))
+        self.buttonCancel.clicked.connect(lambda: self.mode_veille())
+        self.veilleButton.clicked.connect(lambda: self.show_cam())
+        self.buttonPhoto.clicked.connect(lambda: self.start_countdown())
         
         self.widgetPrint.hide()
         self.widgetPhoto.hide()
         self.warning.hide()
         self.countdown.hide()
         
-        self.getComptPrint()
-
+        self.get_compt_print()
 
         self.MainWindow.show()
-        self.ShowCam()
+        self.show_cam()
         
-        if DEVELOPERMODE:
-            rect = win32gui.GetWindowRect(win32gui.FindWindow(None, 'PhotoBooth'))
-            win32gui.MoveWindow(win32gui.FindWindow(None, 'PhotoBooth'), rect[0]+3000, rect[1], rect[2]+3000, rect[3], True)
-        else:            
-            self.widgetDevelopper.hide()
-        self.fullScreen()
+        if not DEVELOPERMODE:
+            self.full_screen()
+            # self.widgetDevelopper.hide()
 
-
-    def SetScale(self):
+    def set_scale(self):
         font = QtGui.QFont()
         font.setFamily("Amatic")
         font.setPointSize(20)
         font.setBold(True)
-        #font.setWeight(75)
+        # font.setWeight(75)
         font.setPointSize(int(round(75 / SCALE, 0)))
         self.MainWindow.setFont(font)
         self.MainWindow.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
 
-        #font.setPointSize(36)
+        # font.setPointSize(36)
         font.setPointSize(int(round(36 / SCALE, 0)))
         self.compteur.setFont(font)
 
-        #font.setPointSize(100)
+        # font.setPointSize(100)
         font.setPointSize(int(round(100 / SCALE, 0)))
         self.nbPrintLabel.setFont(font)
 
@@ -121,12 +137,12 @@ class PhotoBooth(Ui_PhotoBooth):
         font.setFamily("Amatic")
         font.setPointSize(60)
         font.setBold(True)
-        #font.setWeight(75)
+        # font.setWeight(75)
         font.setPointSize(int(round(75 / SCALE, 0)))
         self.buttonIncrease.setFont(font)
 
         font = QtGui.QFont()
-        #font.setPointSize(72)
+        # font.setPointSize(72)
         font.setPointSize(int(round(72 / SCALE, 0)))
         self.buttonPrinter.setFont(font)
         self.buttonRestart.setFont(font)
@@ -137,230 +153,230 @@ class PhotoBooth(Ui_PhotoBooth):
 
         font = QtGui.QFont()
         font.setFamily("Amatic")
-        #font.setPointSize(60)
+        # font.setPointSize(60)
         font.setPointSize(int(round(60 / SCALE, 0)))
         font.setBold(True)
         font.setWeight(75)
         self.buttonDecrease.setFont(font)
 
         font = QtGui.QFont()
-        #font.setPointSize(500)
+        # font.setPointSize(500)
         font.setPointSize(int(round(500 / SCALE, 0)))
         self.countdown.setFont(font)
 
         font = QtGui.QFont()
-        #font.setPointSize(160)
+        # font.setPointSize(160)
         font.setPointSize(int(round(160 / SCALE, 0)))
         self.lookUp.setFont(font)
 
-
-
-
-#@pyqtSlot(QImage)
-    def setImage(self, image):
+    def set_image(self, image):
         self.camView.setPixmap(QPixmap.fromImage(image))
-    
-      
-        
-        
-    def fullScreen(self):
-        if self.full:
+
+    def full_screen(self):
+        if self.fullscreen:
             self.MainWindow.showNormal()
         else:
             self.MainWindow.showFullScreen()
-        self.full=not self.full
-        #self.MainWindow.resize(1920, 1080)
-        #self.centralwidget.resize(1920,1080)
-        #self.background.resize(1920,1080)
-                  
+        self.fullscreen = not self.fullscreen
         
-    def CloseWindow(self):
-        self.relais.OFF('light')
-        self.relais.OFF('fanCam')
-        self.relais.OFF('fanPrinter')
+    def close_window(self):
+        self.stop_veille()
+        self.relais.close()
         self.camera.close()
-        self.StopCam()
+        self.stop_cam()
         self.MainWindow.close()
         
-        
-    def showPhoto(self):
-        
-        pixmap=self.lastPhoto.QImage
+    def show_photo(self):
+        pixmap = self.lastPhoto.QImage
 
         self.viewer.setPixmap(pixmap)
         
         self.widgetPhoto.hide()
         self.widgetPrint.show()
         
-        self.changeNbPrint(0)
-        
+        self.change_nb_print(0)
 
-    def StartCountdown(self):
-        self.ct_active = True
+    def start_countdown(self):
+        self.action_done = True
+        self.photo_countdown = True
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '10'))
         self.countdown.show()
         self.buttonPhoto.hide()
-        self.th.StartCountdown(10)
+        self.cam_thread.start_countdown(10)
 
-        
-
-
-    def ShowCam(self):
-
+    def show_cam(self):
+        self.action_done = True
         self.veilleButton.hide()
         self.widgetPrint.hide()   
         self.widgetPhoto.show()    
         self.lookUp.hide()
 
         if self.dark:
-            self.relais.ON('light')
-        self.relais.ON('fanCam')
+            self.relais.on('light')
+
+        self.cam_thread = CamThread(self)
+        # self.cam_thread.changePixmap.connect(self.set_image)
+        # self.cam_thread.init(self)
+        self.cam_thread.start()
+
+        self.stop_veille()
+        self.veille_countdown = True
+        self.veille_th = Thread(target=self.veille_thread)
+        self.veille_th.start()
+
+    def veille_thread(self):
+        timer = 0
+        while timer < 60 and self.veille_countdown:
+            timer += 1
+            if self.action_done:
+                timer = 0
+                self.action_done = False
+            print("Veille thread - ", str(timer))
+            sleep(1)
+        if self.veille_countdown:
+            self.mode_veille()
+
+    def mode_veille(self):
+        self.stop_cam()
+        self.veilleButton.show()
+        self.relais.off('light')
+
+    def stop_veille(self):
+        self.veille_countdown = False
+        if self.veille_th:
+            while self.veille_th.is_alive():
+                pass
         
-        self.th = Thread()
-        self.th.changePixmap.connect(self.setImage)
-        self.th.init(self)
-        self.th.start()
-        
-        
-        
-    def StopCam(self):
+    def stop_cam(self):
+        # print(cam_thread)
         self.camView.clear()
         self.widgetPhoto.hide()  
-        try:
-            self.th.stop()
-        except:
-            pass
-     
+        if self.cam_thread:
+            self.cam_thread.stop()
+            self.cam_thread.quit()
+            del self.cam_thread
+        print("Closing")
+        # print(cam_thread)
         
-        
-    def TakePhoto(self):
+    def take_photo(self):
 
-        self.ct_active = False
+        self.photo_countdown = False
 
-        oldPic=photo()
+        old_pic = Photo()
         
-        self.camera.Trigger()
+        self.camera.trigger()
         
-        self.StopCam()  
+        self.stop_cam()
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '0'))
         self.countdown.hide()
         self.buttonPhoto.show()
         
-        self.lastPhoto=photo()
-        while self.lastPhoto.path==oldPic.path:
-            self.lastPhoto=photo()
+        self.lastPhoto = Photo()
+        while self.lastPhoto.path == old_pic.path:
+            self.lastPhoto = Photo()
 
-
-        if self.lastPhoto.isDarker(1600):
-            self.relais.ON('light')
-            self.dark=True
+        if self.lastPhoto.is_darker(1600):
+            self.relais.on('light')
+            self.dark = True
         self.lastPhoto.watermark()
 
-        self.showPhoto()
+        self.show_photo()
 
-
-    def modeVeille(self):
-        self.StopCam()
-        self.veilleButton.show()
-        self.relais.OFF('light')
-        self.relais.OFF('fanCam')
-        self.relais.OFF('fanPrinter')
-        
-    def changeNbPrint(self, i):
-        if i==0: # Init
-            self.nbPrint=1
+    def change_nb_print(self, i):
+        self.action_done = True
+        if i == 0:
+            self.nbPrint = 1
         else:
-            self.nbPrint=min(max(1,self.nbPrint+i),6)
+            self.nbPrint = min(max(1, self.nbPrint+i), 6)
         self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.nbPrint)))
 
-        
+    def printer_fan_controler(self):
+        self.relais.on('fanPrinter')
+        sleep(60)
+        self.relais.off('fanPrinter')
+
     def send2printer(self):
-        self.relais.ON('fanPrinter')
-        for i in range(self.nbPrint):
+        self.action_done = True
+        for _ in range(self.nbPrint):
             printer(self.lastPhoto, self.ROTATE_180)
-        self.setComptPrint(self.nbPrint)
-        self.ShowCam()
-        
-        
-    def getComptPrint(self):
-        file1 = open("compteur.txt","r")
-        self.comptPrint=int(file1.read())
-        file1.close
-        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+'\nphotos\nrestantes'))
 
-    def setComptPrint(self,n):
-        self.comptPrint-=n
-        file1 = open("compteur.txt","w")
-        file1.write(str(self.comptPrint))
-        file1.close
-        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.comptPrint)+'\nphotos\nrestantes'))
-        
-        file2 = open("Printlog.csv","a")
-        line=[]
-        line.append(str(datetime.now()))
-        line.append(self.lastPhoto.name)
-        line.append(str(n))
-        file2.write(';'.join(line))
-        file2.close
+        self.printer_fan_thread = Thread(target=self.printer_fan_controler)
+        self.printer_fan_thread.start()
+
+        self.set_compt_print(self.nbPrint)
+        self.show_cam()
+
+    def get_compt_print(self):
+        with open("compteur.txt", "r") as file:
+            self.comptPrint = int(file.read())
+        self.show_compt_print()
+
+    def set_compt_print(self, n):
+        print(self.comptPrint)
+        self.comptPrint -= n
+        print(self.comptPrint)
+        with open("compteur.txt", "w") as file:
+            file.write(str(self.comptPrint))
+        self.show_compt_print()
+
+        with open("Printlog.csv", "a") as csvFile:
+            line = [str(datetime.now()), self.lastPhoto.name, str(n)]
+            csvFile.write(';'.join(line))
+
+    def show_compt_print(self):
+        text = str(self.comptPrint)+'\nphotos\nrestantes'
+        self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", text))
 
 
-
-class photo():
+class Photo:
     def __init__(self):
-        self.width=1620
-        self.height=1080
-        self.folder=PHOTOFOLDER
-        self.PicType=PICTYPE
-        try:
-            list_of_files = glob.glob(self.folder + '*.' + self.PicType)
-            self.path=max(list_of_files, key=os.path.getctime)
-            self.name=basename(self.path)
-            self.Image=Image.open(self.path)
-        except:
-            self.path=''
+        self.width = 1620
+        self.height = 1080
+        self.folder = PHOTOFOLDER
+        self.PicType = PICTYPE
+        self.Image2print = ''
+        self.QImage = ''
 
-    
-    def isDarker(self,ISOmax):
-        exif = { ExifTags.TAGS[k]: v for k, v in self.Image._getexif().items() if k in ExifTags.TAGS }
-        ISO=exif['ISOSpeedRatings']
-        return(ISO>=ISOmax)
-    
+        list_of_files = glob.glob(self.folder + '*.' + self.PicType)
+        if list_of_files:
+            self.path = max(list_of_files, key=os.path.getctime)
+            self.name = basename(self.path)
+            self.Image = Image.open(self.path)
+        else:
+            self.path = ''
+
+    def is_darker(self, iso_max):
+        exif = {ExifTags.TAGS[k]: v for k, v in self.Image._getexif().items() if k in ExifTags.TAGS}
+        iso = exif['ISOSpeedRatings']
+        return iso >= iso_max
+
     def watermark(self):
-        
-        WATERMARK="ressources\logo_blanc_sur_transparent.png"
-        SIZE=(6,4) #in inch
-        RESOLUTION=300 #ppi
-        
-        
+
         self.Image = Image.open(self.path)
-        self.Image.thumbnail((SIZE[0]*RESOLUTION,SIZE[1]*RESOLUTION), Image.ANTIALIAS)
+        self.Image.thumbnail((SIZE[0]*RESOLUTION, SIZE[1]*RESOLUTION), Image.ANTIALIAS)
 
         if ROTATE_180:
-            self.Image=self.Image.transpose(Image.ROTATE_180)
+            self.Image = self.Image.transpose(Image.ROTATE_180)
 
-        if WATERMARK:
-            watermark = Image.open(WATERMARK)
-            width, height = self.Image.size
-            transparent = Image.new('RGBA', (width, height), (0,0,0,0))
-            transparent.paste(self.Image, (0,0))
-            transparent.paste(watermark, (SIZE[0]*RESOLUTION-watermark.size[0]-20,SIZE[1]*RESOLUTION-watermark.size[1]-40), mask=watermark)
+        width, height = self.Image.size
+        transparent = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+
+        if WTMRK:
+            watermark = Image.open(WTMRK)
+            transparent.paste(self.Image, (0, 0))
+            pos_x = SIZE[0] * RESOLUTION - watermark.size[0] - 20
+            pos_y = SIZE[1] * RESOLUTION - watermark.size[1] - 40
+            transparent.paste(watermark, (pos_x, pos_y), mask=watermark)
         else:
             transparent.paste(self.Image, (0, 0))
 
-        self.Image2print=transparent
-        transparent=transparent.resize((1620,1080))
-        self.QImage=QPixmap.fromImage(ImageQt(transparent))
-       
-
- 
+        self.Image2print = transparent
+        transparent = transparent.resize((1620, 1080))
+        self.QImage = QPixmap.fromImage(ImageQt(transparent))
 
 
 if __name__ == '__main__':
     pythoncom.CoInitialize()
-    app = QtWidgets.QApplication(sys.argv)
-    PhotoBooth=PhotoBooth()
-    sys.exit(app.exec_())
-
-    #test_photo=photo()
-    #test_photo.folder='/home/florian/Téléchargements/onedrive/docs/images'
-    #print(test_photo.isDarker(1600))
+    new_app = QtWidgets.QApplication(sys.argv)
+    PhotoBooth = PhotoBooth(new_app)
+    sys.exit(new_app.exec_())
