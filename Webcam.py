@@ -21,7 +21,6 @@ class CamThread(QThread):
         cv2.destroyAllWindows()
         self.PhotoBooth = photobooth
         self.set_resolution(1)
-        self.cdRunning = False
         self.StartTime = datetime.now()
         self.runing = False
         self.changePixmap.connect(photobooth.set_image)
@@ -42,19 +41,10 @@ class CamThread(QThread):
 
         self.cropLeft = int((1920-1620) / (2*1920) * self.resolution[0])
         self.cropRight = int((1-(1920-1620) / (2*1920)) * self.resolution[0])
-        
-    def start_countdown(self, duree):
-        self.cdStart = datetime.now()
-        self.cdRunning = True
-        self.cdValue = -1
-        self.duree = duree
 
     def launch_cam(self):
         cv2.destroyAllWindows()
-        try:
-            self.cap.release()
-        except:
-            pass
+        self.cap.release()
 
         self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
@@ -73,8 +63,10 @@ class CamThread(QThread):
             if ret:
 
                 # Check if the picture is full black
-                if self.is_black(frame) and not self.PhotoBooth.photo_countdown:
+                if self.is_black(frame):
                     self.launch_cam()
+                else:
+                    self.PhotoBooth.camView.show()
 
                 # Mirror Flip
                 frame = cv2.flip(frame, 1)
@@ -89,17 +81,6 @@ class CamThread(QThread):
                 # Resize
                 if self.resolution[1] < 1920:
                     frame = cv2.resize(frame, (1620, 1080), fx=0, fy=0, interpolation=cv2.INTER_CUBIC)
-
-                if self.cdRunning:
-                    duree = datetime.now()-self.cdStart
-                    if duree.seconds > self.cdValue:
-                        self.cdValue = duree.seconds
-                        self.PhotoBooth.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.duree-self.cdValue-1)))
-                    if duree.seconds == self.duree-3:
-                        self.PhotoBooth.countdown.hide()
-                        self.PhotoBooth.lookUp.show()
-                    if duree.seconds == self.duree-2:
-                        self.PhotoBooth.take_photo()
 
                 # Send to Qt
                 rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -121,16 +102,13 @@ class CamThread(QThread):
         # Check if less than 10% of the picture is not black
         grey_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         if cv2.countNonZero(grey_frame) < self.resolution[0] * self.resolution[1]*0.1:
-            print("The image is full black")
+            # print("The image is full black")
             return True
         else:
             return False
                 
     def stop(self):
-        try:
-            self.changePixmap.disconnect()
-        except:
-           pass
+        self.changePixmap.disconnect()
         self.runing = False
         self.cap.release()
         cv2.destroyAllWindows()

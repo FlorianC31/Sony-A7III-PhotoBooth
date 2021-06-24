@@ -77,9 +77,11 @@ class Window:
     def is_focus(self):
         return win32gui.GetForegroundWindow() == self.get_hwnd()
 
-    def set_x_init(self):
-        rect = win32gui.GetWindowRect(self.get_hwnd())
-        self.x_init = rect[0]
+    def set_x_init(self, x=0):
+        if x == 0:
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            self.x_init = rect[0]
+        self.x_init = x
     
     
 class Remote(Window):
@@ -157,16 +159,31 @@ class Camera:
         self.running = False
 
     def trigger(self):
-        if self.ViewerWindow.is_open():
-            self.ViewerWindow.close()
-
         self.RemoteWindow.x_move(6000, False)
         self.RemoteWindow.show()
 
         keyboard.press('&')
-        time.sleep(2)
+        time.sleep(0.5)
         keyboard.release('&')
         
+        self.PhotoBoothWindow.show()
+        self.RemoteWindow.x_move(self.RemoteWindow.x_init)
+
+    def focus(self, preshot=False):
+        self.RemoteWindow.x_move(6000, False)
+        self.RemoteWindow.show()
+
+        if preshot:
+            keyboard.press('g')
+            time.sleep(0.5)
+            keyboard.release('g')
+        else:
+            keyboard.press('g')
+            time.sleep(2)
+            keyboard.release('g')
+            keyboard.press('g')
+            keyboard.release('g')
+
         self.PhotoBoothWindow.show()
         self.RemoteWindow.x_move(self.RemoteWindow.x_init)
 
@@ -206,7 +223,8 @@ class Camera:
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        self.RemoteWindow.set_x_init()
+        self.RemoteWindow.set_x_init(1800)
+        self.ImagingWindow.x_move(1800)
 
         self.close_liveview()
 
@@ -224,6 +242,7 @@ class Camera:
             keyboard.press('l')
             keyboard.release('l')
             keyboard.release('Ctrl')
+        # sys.exit(0)
 
     def chek_connect(self):
         while not self.RemoteWindow.is_disconet_msg() and self.running:

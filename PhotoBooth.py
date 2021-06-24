@@ -54,7 +54,6 @@ class PhotoBooth(Ui_PhotoBooth):
         self.app = app
 
         self.dark = False
-        self.photo_countdown = False
         self.veille_countdown = False
         self.fullscreen = False
 
@@ -68,6 +67,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.relais = Relais(('light', 'fanPrinter', 'fanCam', ''))
 
         self.cam_thread = None
+        self.cd_thread = None
         self.lastPhoto = None
 
         self.veille_th = None
@@ -156,7 +156,8 @@ class PhotoBooth(Ui_PhotoBooth):
         # font.setPointSize(60)
         font.setPointSize(int(round(60 / SCALE, 0)))
         font.setBold(True)
-        font.setWeight(75)
+        # font.setWeight(75)
+        font.setPointSize(int(round(75 / SCALE, 0)))
         self.buttonDecrease.setFont(font)
 
         font = QtGui.QFont()
@@ -190,34 +191,60 @@ class PhotoBooth(Ui_PhotoBooth):
         pixmap = self.lastPhoto.QImage
 
         self.viewer.setPixmap(pixmap)
-        
-        self.widgetPhoto.hide()
+
         self.widgetPrint.show()
         
         self.change_nb_print(0)
 
     def start_countdown(self):
         self.action_done = True
-        self.photo_countdown = True
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '10'))
         self.countdown.show()
         self.buttonPhoto.hide()
-        self.cam_thread.start_countdown(10)
+        self.cd_thread = Thread(target=self.countdown_thread)
+        self.cd_thread.start()
+
+    def countdown_thread(self):
+        cd = 10
+        while cd > 0:
+            sleep(1)
+            cd -= 1
+
+            self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(cd)))
+
+            if cd == 8:
+                focus_thread = Thread(target=self.camera.focus)
+                focus_thread.start()
+
+            if cd == 2:
+                self.loading.hide()
+                stop_thread = Thread(target=self.stop_cam)
+                stop_thread.start()
+                self.camView.hide()
+                self.lookUp.show()
+
+            if cd == 1:
+                focus_thread = Thread(target=self.camera.focus, args=[True])
+                focus_thread.start()
+
+        self.take_photo()
+
+        self.camView.clear()
+        self.camView.show()
 
     def show_cam(self):
         self.action_done = True
+        self.camView.hide()
         self.veilleButton.hide()
         self.widgetPrint.hide()   
         self.widgetPhoto.show()    
         self.lookUp.hide()
 
+        self.cam_thread = CamThread(self)
+        self.cam_thread.start()
+
         if self.dark:
             self.relais.on('light')
-
-        self.cam_thread = CamThread(self)
-        # self.cam_thread.changePixmap.connect(self.set_image)
-        # self.cam_thread.init(self)
-        self.cam_thread.start()
 
         self.stop_veille()
         self.veille_countdown = True
@@ -231,7 +258,7 @@ class PhotoBooth(Ui_PhotoBooth):
             if self.action_done:
                 timer = 0
                 self.action_done = False
-            print("Veille thread - ", str(timer))
+            # print("Veille thread - ", str(timer))
             sleep(1)
         if self.veille_countdown:
             self.mode_veille()
@@ -249,30 +276,27 @@ class PhotoBooth(Ui_PhotoBooth):
         
     def stop_cam(self):
         # print(cam_thread)
-        self.camView.clear()
-        self.widgetPhoto.hide()  
         try:
             self.cam_thread.stop()
             self.cam_thread.quit()
             del self.cam_thread
         except AttributeError:
             pass
-        print("Closing")
+        # print("Closing")
         # print(cam_thread)
         
     def take_photo(self):
 
-        self.photo_countdown = False
-
         old_pic = Photo()
-        
+
         self.camera.trigger()
-        
-        self.stop_cam()
-        self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '0'))
-        self.countdown.hide()
+
+        self.widgetPhoto.hide()
+        self.loading.show()
+
         self.buttonPhoto.show()
-        
+        self.countdown.hide()
+
         self.lastPhoto = Photo()
         while self.lastPhoto.path == old_pic.path:
             self.lastPhoto = Photo()

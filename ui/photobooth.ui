@@ -498,7 +498,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-100</y>
+      <y>200</y>
       <width>1620</width>
       <height>700</height>
      </rect>
@@ -606,8 +606,8 @@ color: rgb(255, 255, 255);</string>
   <zorder>logo1</zorder>
   <zorder>logo2</zorder>
   <zorder>compteur</zorder>
-  <zorder>veilleButton</zorder>
   <zorder>widgetDevelopper</zorder>
+  <zorder>veilleButton</zorder>
  </widget>
  <resources/>
  <connections/>

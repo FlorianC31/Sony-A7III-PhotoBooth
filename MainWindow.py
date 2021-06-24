@@ -190,7 +190,7 @@ class Ui_PhotoBooth(object):
         self.buttonPhoto.setIconSize(QtCore.QSize(150, 150))
         self.buttonPhoto.setObjectName("buttonPhoto")
         self.countdown = QtWidgets.QLabel(self.widgetPhoto)
-        self.countdown.setGeometry(QtCore.QRect(0, -100, 1620, 700))
+        self.countdown.setGeometry(QtCore.QRect(0, 200, 1620, 700))
         font = QtGui.QFont()
         font.setPointSize(500)
         self.countdown.setFont(font)
