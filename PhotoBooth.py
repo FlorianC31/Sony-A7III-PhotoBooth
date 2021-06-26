@@ -34,6 +34,8 @@ from time import sleep
 from ctypes import windll
 
 from threading import Thread
+from setproctitle import setproctitle
+
 
 PHOTOFOLDER = r"C:\Photos_PhotoBooth\\"
 PICTYPE = "JPG"
@@ -181,6 +183,8 @@ class PhotoBooth(Ui_PhotoBooth):
         self.fullscreen = not self.fullscreen
         
     def close_window(self):
+        with open("run.txt", "w") as file:
+            file.write("0")
         self.stop_veille()
         self.relais.close()
         self.camera.close()
@@ -401,8 +405,17 @@ class Photo:
         self.QImage = QPixmap.fromImage(ImageQt(transparent))
 
 
-if __name__ == '__main__':
+def run_photobooth():
+    setproctitle("PhotoBooth-run")
+
+    with open("run.txt", "w") as file:
+        file.write("1")
+
     pythoncom.CoInitialize()
     new_app = QtWidgets.QApplication(sys.argv)
-    PhotoBooth = PhotoBooth(new_app)
+    PhotoBooth(new_app)
     sys.exit(new_app.exec_())
+
+
+if __name__ == '__main__':
+    run_photobooth()

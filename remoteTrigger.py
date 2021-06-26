@@ -223,8 +223,8 @@ class Camera:
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        self.RemoteWindow.set_x_init(1800)
-        self.ImagingWindow.x_move(1800)
+        self.RemoteWindow.set_x_init()
+        # self.ImagingWindow.x_move(1800)
 
         self.close_liveview()
 
