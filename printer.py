@@ -34,12 +34,9 @@ PHYSICALOFFSETX = 112
 PHYSICALOFFSETY = 113
 
 
-def printer(photo,rotate=False):
+def printer(photo, rotate=False):
 
-    printer_name = win32print.GetDefaultPrinter ()
-    #photo = "Noël2019-095.jpg"
-    #photo= "Thomas-Rocamadour-031.jpg"
-    
+    printer_name = win32print.GetDefaultPrinter()
     #
     # You can only write a Device-independent bitmap
     #  directly to a Windows device context; therefore
@@ -49,14 +46,11 @@ def printer(photo,rotate=False):
     # Create a device context from a named printer
     #  and assess the printable size of the paper.
     #
-    hDC = win32ui.CreateDC ()
-    hDC.CreatePrinterDC (printer_name)
-    printable_area = hDC.GetDeviceCaps (HORZRES), hDC.GetDeviceCaps (VERTRES)
-    printer_size = hDC.GetDeviceCaps (PHYSICALWIDTH), hDC.GetDeviceCaps (PHYSICALHEIGHT)
-    #printer_margins = hDC.GetDeviceCaps (PHYSICALOFFSETX), hDC.GetDeviceCaps (PHYSICALOFFSETY)
-    
-
-    
+    hDC = win32ui.CreateDC()
+    hDC.CreatePrinterDC(printer_name)
+    printable_area = hDC.GetDeviceCaps(HORZRES), hDC.GetDeviceCaps(VERTRES)
+    printer_size = hDC.GetDeviceCaps(PHYSICALWIDTH), hDC.GetDeviceCaps(PHYSICALHEIGHT)
+    # printer_margins = hDC.GetDeviceCaps (PHYSICALOFFSETX), hDC.GetDeviceCaps (PHYSICALOFFSETY)
     
     #
     # Open the image, rotate it if it's wider than
@@ -64,38 +58,29 @@ def printer(photo,rotate=False):
     #  each pixel by to get it as big as possible on
     #  the page without distorting.
     #
-    #bmp = Image.open (photo)
     bmp = photo.Image2print
-    
-    
-    #if bmp.size[0] < bmp.size[1]:
-    #    bmp.resize(bmp.size[1]/2,bmp.size[0]/2)
+
     if rotate:
-        bmp = bmp.rotate (180)
-      
+        bmp = bmp.rotate(180)
 
-    
-    
     ratios = [1.0 * printable_area[0] / bmp.size[0], 1.0 * printable_area[1] / bmp.size[1]]
-    scale = min (ratios)
+    scale = min(ratios)
 
-    #sys.exit(0)
-    
     #
     # Start the print job, and draw the bitmap to
     #  the printer device at the scaled size.
     #
-    hDC.StartDoc (photo.path)
-    hDC.StartPage ()
+    hDC.StartDoc(photo.path)
+    hDC.StartPage()
     
-    dib = ImageWin.Dib (bmp)
-    scaled_width, scaled_height = [int (scale * i) for i in bmp.size]
-    x1 = int ((printer_size[0] - scaled_width) / 2)
-    y1 = int ((printer_size[1] - scaled_height) / 2)
+    dib = ImageWin.Dib(bmp)
+    scaled_width, scaled_height = [int(scale * i) for i in bmp.size]
+    x1 = int((printer_size[0] - scaled_width) / 2)
+    y1 = int((printer_size[1] - scaled_height) / 2)
     x2 = x1 + scaled_width
     y2 = y1 + scaled_height
-    dib.draw (hDC.GetHandleOutput (), (x1, y1, x2, y2))
+    dib.draw(hDC.GetHandleOutput(), (x1, y1, x2, y2))
     
-    hDC.EndPage ()
-    hDC.EndDoc ()
-    hDC.DeleteDC ()
+    hDC.EndPage()
+    hDC.EndDoc()
+    hDC.DeleteDC()
