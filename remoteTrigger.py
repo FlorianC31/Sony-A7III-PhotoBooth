@@ -81,7 +81,8 @@ class Window:
         if x == 0:
             rect = win32gui.GetWindowRect(self.get_hwnd())
             self.x_init = rect[0]
-        self.x_init = x
+        else:
+            self.x_init = x
     
     
 class Remote(Window):
@@ -193,12 +194,12 @@ class Camera:
         # Open the main Imaging Edge programm
         nb_iter = 1
         if not self.ImagingWindow.is_open():
-            print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
+            print("Ouverture de Imagine Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             os.popen(r"C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
             while not self.ImagingWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
+                print("Ouverture de Imagine Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             print("Imagine Edge Desktop est ouvert")
 
         if not self.RemoteWindow.is_open():
@@ -209,12 +210,12 @@ class Camera:
                 time.sleep(1)
 
             nb_iter = 1
-            print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+            print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
             self.ImagingWindow.click(665, 160)
             while not self.RemoteWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+                print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
             print("Remote Window est ouvert")
         
         # If the Remote application can not find the Camera and send an error message
@@ -227,17 +228,19 @@ class Camera:
         # self.ImagingWindow.x_move(1800)
 
         self.close_liveview()
+        self.PhotoBoothWindow.show()
 
         self.chek_connect_th = Thread(target=self.chek_connect)
         # self.chek_connect_th.start()
 
     def close_liveview(self):
+        time.sleep(1)
         rect = win32gui.GetWindowRect(self.RemoteWindow.get_hwnd())
         width = int((rect[2] - rect[0]) / self.scale)
         if width > 500:
             self.ImagingWindow.show()
             self.RemoteWindow.show()
-            time.sleep(1)
+            time.sleep(0.1)
             keyboard.press('Ctrl')
             keyboard.press('l')
             keyboard.release('l')

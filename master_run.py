@@ -15,11 +15,18 @@ if __name__ == "__main__":
         process.name = "PhotoBooth-Run"  # not visible by the system, only by Python
         process.start()
         process.is_alive()
-        print(f"Photobooth lancé avec l'id {process.pid}")
+        # print(f"Photobooth lancé avec l'id {process.pid}")
         # Attendre la fin de l'exécution du thread.
         process.join()
 
         with open("run.txt", "r") as file:
             run = int(file.read())
         if run:
-            print("WARNING: Il y a eu un petit soucis, veuillez pattienter le PhotoBooth va redémarrer tout seul.")
+            print("")
+            print("")
+            print("######################################################################################################")
+            print("#                                                                                                    #")
+            print("#     OOPS, Il y a eu un petit souci, veuillez patienter le PhotoBooth va redémarrer tout seul !     #")
+            print("#                                                                                                    #")
+            print("######################################################################################################")
+            print("")
