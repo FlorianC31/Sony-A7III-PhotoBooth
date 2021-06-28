@@ -221,23 +221,27 @@ class PhotoBooth(Ui_PhotoBooth):
                 focus_thread = Thread(target=self.camera.focus)
                 focus_thread.start()
 
-            if cd == 2:
+            elif cd == 2:
                 self.loading.hide()
+
+                self.camView.hide()
                 stop_thread = Thread(target=self.stop_cam)
                 stop_thread.start()
-                self.camView.hide()
-                self.lookUp.show()
+                self.camView.clear()
 
-            if cd == 1:
+                self.lookUp.show()
+                self.camView.hide()
+
+            elif cd == 1:
                 focus_thread = Thread(target=self.camera.focus, args=[True])
                 focus_thread.start()
 
         self.take_photo()
 
-        self.camView.clear()
         self.camView.show()
 
     def show_cam(self):
+        self.buttonPhoto.hide()
         self.action_done = True
         self.camView.hide()
         self.veilleButton.hide()
@@ -294,17 +298,19 @@ class PhotoBooth(Ui_PhotoBooth):
 
         old_pic = Photo()
 
-        self.camera.trigger()
-
+        self.camera.trigger_on()
+        self.flash.show()
+        sleep(0.4)
+        self.flash.hide()
         self.widgetPhoto.hide()
         self.loading.show()
-
-        self.buttonPhoto.show()
         self.countdown.hide()
 
         self.lastPhoto = Photo()
         while self.lastPhoto.path == old_pic.path:
             self.lastPhoto = Photo()
+
+        # self.buttonPhoto.show()
 
         if self.lastPhoto.is_darker(1600):
             self.relais.on('light')

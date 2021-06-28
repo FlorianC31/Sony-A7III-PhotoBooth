@@ -1,11 +1,10 @@
 from multiprocessing import Process
-import time
 from setproctitle import setproctitle
-
 from PhotoBooth import run_photobooth
 
 
 if __name__ == "__main__":
+
     # Configurer notre objet de Thread pour utiliser la fonction ci-dessus
     setproctitle("PhotoBooth-Master")  # set the name of the process visible by the system
     run = 1

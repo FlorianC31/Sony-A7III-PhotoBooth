@@ -57,6 +57,7 @@ class CamThread(QThread):
         self.set_resolution(1)
 
         self.launch_cam()
+        first = True
 
         while self.runing:
             ret, frame = self.cap.read()
@@ -66,6 +67,9 @@ class CamThread(QThread):
                 if self.is_black(frame):
                     self.launch_cam()
                 else:
+                    if first:
+                        self.PhotoBooth.buttonPhoto.show()
+                        first = False
                     self.PhotoBooth.camView.show()
 
                 # Mirror Flip

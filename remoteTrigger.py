@@ -158,14 +158,13 @@ class Camera:
             self.ViewerWindow.x_move(300)
         self.running = False
 
-    def trigger(self):
+    def trigger_on(self):
         self.RemoteWindow.x_move(6000, False)
         self.RemoteWindow.show()
-
         keyboard.press('&')
-        time.sleep(0.5)
+
+    def trigger_off(self):
         keyboard.release('&')
-        
         self.PhotoBoothWindow.show()
         self.RemoteWindow.x_move(self.RemoteWindow.x_init)
 
@@ -228,6 +227,8 @@ class Camera:
 
         self.close_liveview()
         self.PhotoBoothWindow.show()
+        # self.trigger_on()
+        # self.trigger_off()
 
         self.chek_connect_th = Thread(target=self.chek_connect)
         # self.chek_connect_th.start()

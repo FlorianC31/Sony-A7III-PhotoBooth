@@ -33,7 +33,7 @@ def upper_fan_controller(relais):
             # print("CPU Temp = " + str(cpu_temp) + "<" + str(MIN_TEMP) + " - Fan OFF")
             relais.off('fanCam')
 
-        sleep(5)
+        sleep(1)
 
 
 if __name__ == '__main__':

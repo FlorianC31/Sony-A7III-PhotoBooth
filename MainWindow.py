@@ -227,6 +227,13 @@ class Ui_PhotoBooth(object):
         self.logo2.setPixmap(QtGui.QPixmap("ressources/logo_blanc_sur_transparent.png"))
         self.logo2.setScaledContents(True)
         self.logo2.setObjectName("logo2")
+
+        self.flash = QtWidgets.QPushButton(PhotoBooth)
+        self.flash.setGeometry(QtCore.QRect(-20, -20, 1960, 1120))
+        self.flash.setFont(font)
+        self.flash.setStyleSheet("background-color: white;")
+        self.flash.setObjectName("flash")
+
         self.background.raise_()
         self.loading.raise_()
         self.widgetPhoto.raise_()
@@ -236,6 +243,7 @@ class Ui_PhotoBooth(object):
         self.compteur.raise_()
         self.veilleButton.raise_()
         self.widgetDevelopper.raise_()
+        self.flash.raise_()
 
         self.retranslateUi(PhotoBooth)
         QtCore.QMetaObject.connectSlotsByName(PhotoBooth)
