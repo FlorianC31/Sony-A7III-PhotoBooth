@@ -90,7 +90,7 @@ class CamThread(QThread):
                 self.changePixmap.emit(convert_to_qt_format)
 
             else:
-                print('Broken Frame')
+                # print('Broken Frame')
                 broken += 1
                 broken_msg = str(broken)+" broken frames"
                 self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", broken_msg))

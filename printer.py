@@ -8,6 +8,7 @@ Created on Wed Sep 30 23:05:51 2020
 import win32print
 import win32ui
 from PIL import Image, ImageWin
+import sys
 
 #
 # Constants for GetDeviceCaps
@@ -35,6 +36,8 @@ PHYSICALOFFSETY = 113
 
 
 def printer(photo, rotate=False):
+
+    print("Rotate", rotate)
 
     printer_name = win32print.GetDefaultPrinter()
     #

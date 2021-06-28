@@ -107,6 +107,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.widgetPhoto.hide()
         self.warning.hide()
         self.countdown.hide()
+        self.flash.hide()
         
         self.get_compt_print()
 
@@ -328,7 +329,7 @@ class PhotoBooth(Ui_PhotoBooth):
     def send2printer(self):
         self.action_done = True
         for _ in range(self.nbPrint):
-            printer(self.lastPhoto, self.ROTATE_180)
+            printer(self.lastPhoto)
 
         self.printer_fan_thread = Thread(target=self.printer_fan_controler)
         self.printer_fan_thread.start()
@@ -342,9 +343,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.show_compt_print()
 
     def set_compt_print(self, n):
-        print(self.comptPrint)
         self.comptPrint -= n
-        print(self.comptPrint)
         with open("compteur.txt", "w") as file:
             file.write(str(self.comptPrint))
         self.show_compt_print()

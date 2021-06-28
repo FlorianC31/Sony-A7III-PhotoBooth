@@ -63,8 +63,7 @@ class Window:
             rect = win32gui.GetWindowRect(self.get_hwnd())
             x = rect[0] + int(x_relative * self.scale)
             y = rect[1] + int(y_relative * self.scale)
-            print(rect)
-    
+
             if double_click:
                 pywinauto.mouse.double_click(button='left', coords=(x, y))
             else:
@@ -190,17 +189,17 @@ class Camera:
 
     def launch(self):
         while self.chek_connect_th:
-            print("Le thread tourne encore")
+            pass  # print("Le thread tourne encore")
         # Open the main Imaging Edge programm
         nb_iter = 1
         if not self.ImagingWindow.is_open():
-            print("Ouverture de Imagine Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+            print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             os.popen(r"C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
             while not self.ImagingWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Imagine Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
-            print("Imagine Edge Desktop est ouvert")
+                print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+            print("Imaging Edge Desktop est ouvert")
 
         if not self.RemoteWindow.is_open():
             time.sleep(1)
@@ -224,8 +223,8 @@ class Camera:
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        self.RemoteWindow.set_x_init()
-        # self.ImagingWindow.x_move(1800)
+        self.RemoteWindow.set_x_init(1400)
+        self.ImagingWindow.x_move(800)
 
         self.close_liveview()
         self.PhotoBoothWindow.show()
@@ -234,13 +233,13 @@ class Camera:
         # self.chek_connect_th.start()
 
     def close_liveview(self):
-        time.sleep(1)
+        time.sleep(2)
         rect = win32gui.GetWindowRect(self.RemoteWindow.get_hwnd())
         width = int((rect[2] - rect[0]) / self.scale)
         if width > 500:
             self.ImagingWindow.show()
             self.RemoteWindow.show()
-            time.sleep(0.1)
+            time.sleep(1)
             keyboard.press('Ctrl')
             keyboard.press('l')
             keyboard.release('l')
