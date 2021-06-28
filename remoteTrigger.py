@@ -227,8 +227,8 @@ class Camera:
 
         self.close_liveview()
         self.PhotoBoothWindow.show()
-        # self.trigger_on()
-        # self.trigger_off()
+        self.trigger_on()
+        self.trigger_off()
 
         self.chek_connect_th = Thread(target=self.chek_connect)
         # self.chek_connect_th.start()
