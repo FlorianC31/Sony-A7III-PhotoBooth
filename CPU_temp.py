@@ -2,9 +2,10 @@ import wmi
 from time import sleep
 from relais import Relais
 from threading import Thread
+import win32gui
 
 MAX_TEMP = 65
-MIN_TEMP = 60
+MIN_TEMP = 55
 
 
 def get_cpu_temp():
@@ -22,7 +23,7 @@ def get_cpu_temp():
 
 def upper_fan_controller(relais):
 
-    while relais.running:
+    while relais.running and win32gui.FindWindow(None, 'PhotoBooth') > 0:
         cpu_temp = get_cpu_temp()
 
         if cpu_temp > MAX_TEMP:
@@ -34,6 +35,9 @@ def upper_fan_controller(relais):
             relais.off('fanCam')
 
         sleep(1)
+
+    if relais.running:
+        relais.close()
 
 
 if __name__ == '__main__':

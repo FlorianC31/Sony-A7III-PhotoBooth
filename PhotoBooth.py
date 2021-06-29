@@ -262,14 +262,14 @@ class PhotoBooth(Ui_PhotoBooth):
 
     def veille_thread(self):
         timer = 0
-        while timer < 60 and self.veille_countdown:
+        while timer < 60 and self.veille_countdown and self.camera.PhotoBoothWindow.is_open():
             timer += 1
             if self.action_done:
                 timer = 0
                 self.action_done = False
             # print("Veille thread - ", str(timer))
             sleep(1)
-        if self.veille_countdown:
+        if timer == 60:
             self.mode_veille()
 
     def mode_veille(self):

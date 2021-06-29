@@ -4,6 +4,7 @@ import win32com.client
 import win32gui
 import pywinauto
 import os
+import traceback
 import sys
 
 from threading import Thread
@@ -27,7 +28,8 @@ class Window:
                 win32gui.SetForegroundWindow(self.get_hwnd())
         else:
             print('ERROR: Enable to show ', self.name, ' because it is not opened')
-            sys.exit(1)
+            traceback.print_tb()
+            sys.exit(0)
 
     def get_hwnd(self):
         return win32gui.FindWindow(None, self.name)
@@ -71,7 +73,7 @@ class Window:
 
         else:
             print('ERROR:', self.name, 'is not opened')
-            sys.exit(1)
+            sys.exit(0)
 
     def is_focus(self):
         return win32gui.GetForegroundWindow() == self.get_hwnd()
