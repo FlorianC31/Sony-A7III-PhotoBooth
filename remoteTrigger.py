@@ -228,9 +228,6 @@ class Camera:
         self.ImagingWindow.x_move(800)
 
         self.close_liveview()
-        self.PhotoBoothWindow.show()
-        self.trigger_on()
-        self.trigger_off()
 
         self.chek_connect_th = Thread(target=self.chek_connect)
         # self.chek_connect_th.start()
@@ -247,7 +244,10 @@ class Camera:
             keyboard.press('l')
             keyboard.release('l')
             keyboard.release('Ctrl')
-        # sys.exit(0)
+
+        # Appui sur le bouton de déclenchement dans le cas ou l'AF est vérouillé suite à un bug précédent
+        keyboard.press('&')
+        keyboard.release('&')
 
     def chek_connect(self):
         while not self.RemoteWindow.is_disconet_msg() and self.running:
