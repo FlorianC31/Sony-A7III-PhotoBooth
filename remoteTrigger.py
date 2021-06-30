@@ -2,6 +2,7 @@ import keyboard
 import time
 import win32com.client
 import win32gui
+import win32con
 import pywinauto
 import os
 import traceback
@@ -25,6 +26,7 @@ class Window:
             shell.SendKeys('%')
             while not self.is_focus():
                 time.sleep(0.1)
+                win32gui.ShowWindow(self.get_hwnd(), win32con.SW_NORMAL)
                 win32gui.SetForegroundWindow(self.get_hwnd())
         else:
             print('ERROR: Enable to show ', self.name, ' because it is not opened')
@@ -202,6 +204,7 @@ class Camera:
                 print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             print("Imaging Edge Desktop est ouvert")
 
+        self.ImagingWindow.show()
         self.ImagingWindow.x_move(800)
 
         if not self.RemoteWindow.is_open():
@@ -219,7 +222,8 @@ class Camera:
                 nb_iter += 1
                 print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
             print("Remote Window est ouvert")
-        
+        self.RemoteWindow.show()
+
         # If the Remote application can not find the Camera and send an error message
         time.sleep(2)
         if not self.RemoteWindow.is_operationnal():
