@@ -302,6 +302,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.flash.show()
         sleep(0.4)
         self.flash.hide()
+        self.camera.trigger_off()
         self.widgetPhoto.hide()
         self.loading.show()
         self.countdown.hide()

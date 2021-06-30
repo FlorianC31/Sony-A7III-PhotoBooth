@@ -202,6 +202,8 @@ class Camera:
                 print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             print("Imaging Edge Desktop est ouvert")
 
+        self.ImagingWindow.x_move(800)
+
         if not self.RemoteWindow.is_open():
             time.sleep(1)
 
@@ -224,8 +226,7 @@ class Camera:
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        self.RemoteWindow.set_x_init(1400)
-        self.ImagingWindow.x_move(800)
+        self.RemoteWindow.set_x_init(1200)
 
         self.close_liveview()
 
