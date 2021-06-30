@@ -36,6 +36,11 @@ class Window:
     def get_hwnd(self):
         return win32gui.FindWindow(None, self.name)
 
+    def close(self):
+        print("Fermeture de", self.name)
+        # win32gui.CloseWindow(self.get_hwnd())
+        win32gui.PostMessage(self.get_hwnd(), win32con.WM_CLOSE, 0, 0)
+
     def x_move(self, x, absolute=True):
         if self.is_open():
             rect = win32gui.GetWindowRect(self.get_hwnd())
@@ -108,10 +113,7 @@ class Remote(Window):
     def acknowledge_disconect(self):
         self.click(354, 132)
         time.sleep(0.1)
-    
-    def close(self):
-        self.click(841, 340)
-        
+
     def refresh(self):
         self.click(712, 340)
         time.sleep(5)
@@ -161,6 +163,7 @@ class Camera:
         if self.ViewerWindow.is_open():
             self.ViewerWindow.x_move(300)
         self.running = False
+        self.RemoteWindow.close()
 
     def trigger_on(self):
         self.RemoteWindow.x_move(6000, False)
