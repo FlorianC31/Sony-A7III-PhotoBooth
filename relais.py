@@ -32,7 +32,6 @@ class Relais:
         print("Tentative de connexion " + str(iter) + "/" + str(MAXITER))
 
         if iter < MAXITER:
-            print('Flag1')
             try:
                 self.device = ft.open(0)
                 self.device.setBitMode(0xFF, 0x01)  # IMPORTANT TO HAVE: This sets up the FTDI device as "Bit Bang" mode
@@ -46,8 +45,6 @@ class Relais:
         else:
             print('Impossible de se connecter à la carte relais, vérifier les connexions')
             sys.exit(1)
-
-        print('Flag2')
 
     def set_relay(self, relay, state):
         relay_states = self.device.getBitMode()  # Get the current state of the relays
@@ -70,14 +67,14 @@ class Relais:
         self.set_relay(self.get_relay_id(slot_id), True)
         time.sleep(0.005)
         self.set_relay(self.get_relay_id(slot_id), True)
-        print("Relais "+str(slot_id)+": ON")
+        # print("Relais "+str(slot_id)+": ON")
         
     def off(self, slot_name):
         slot_id = self.slot[slot_name]
         self.set_relay(self.get_relay_id(slot_id), False)
         time.sleep(0.005)
         self.set_relay(self.get_relay_id(slot_id), False)
-        print("Relais "+str(slot_id)+": OFF")
+        # print("Relais "+str(slot_id)+": OFF")
         
     def close(self):
         self.running = False

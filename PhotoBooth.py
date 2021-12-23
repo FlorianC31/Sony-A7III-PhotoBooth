@@ -34,6 +34,8 @@ from time import sleep
 from ctypes import windll
 
 from threading import Thread
+from setproctitle import setproctitle
+
 
 PHOTOFOLDER = r"C:\Photos_PhotoBooth\\"
 PICTYPE = "JPG"
@@ -54,7 +56,6 @@ class PhotoBooth(Ui_PhotoBooth):
         self.app = app
 
         self.dark = False
-        self.photo_countdown = False
         self.veille_countdown = False
         self.fullscreen = False
 
@@ -68,6 +69,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.relais = Relais(('light', 'fanPrinter', 'fanCam', ''))
 
         self.cam_thread = None
+        self.cd_thread = None
         self.lastPhoto = None
 
         self.veille_th = None
@@ -105,6 +107,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.widgetPhoto.hide()
         self.warning.hide()
         self.countdown.hide()
+        self.flash.hide()
         
         self.get_compt_print()
 
@@ -156,7 +159,8 @@ class PhotoBooth(Ui_PhotoBooth):
         # font.setPointSize(60)
         font.setPointSize(int(round(60 / SCALE, 0)))
         font.setBold(True)
-        font.setWeight(75)
+        # font.setWeight(75)
+        font.setPointSize(int(round(75 / SCALE, 0)))
         self.buttonDecrease.setFont(font)
 
         font = QtGui.QFont()
@@ -180,6 +184,8 @@ class PhotoBooth(Ui_PhotoBooth):
         self.fullscreen = not self.fullscreen
         
     def close_window(self):
+        with open("run.txt", "w") as file:
+            file.write("0")
         self.stop_veille()
         self.relais.close()
         self.camera.close()
@@ -190,34 +196,64 @@ class PhotoBooth(Ui_PhotoBooth):
         pixmap = self.lastPhoto.QImage
 
         self.viewer.setPixmap(pixmap)
-        
-        self.widgetPhoto.hide()
+
         self.widgetPrint.show()
         
         self.change_nb_print(0)
 
     def start_countdown(self):
         self.action_done = True
-        self.photo_countdown = True
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '10'))
         self.countdown.show()
         self.buttonPhoto.hide()
-        self.cam_thread.start_countdown(10)
+        self.cd_thread = Thread(target=self.countdown_thread)
+        self.cd_thread.start()
+
+    def countdown_thread(self):
+        cd = 10
+        while cd > 0:
+            sleep(1)
+            cd -= 1
+
+            self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(cd)))
+
+            if cd == 8:
+                focus_thread = Thread(target=self.camera.focus)
+                focus_thread.start()
+
+            elif cd == 2:
+                self.loading.hide()
+
+                self.camView.hide()
+                stop_thread = Thread(target=self.stop_cam)
+                stop_thread.start()
+                self.camView.clear()
+
+                self.lookUp.show()
+                self.camView.hide()
+
+            elif cd == 1:
+                focus_thread = Thread(target=self.camera.focus, args=[True])
+                focus_thread.start()
+
+        self.take_photo()
+
+        self.camView.show()
 
     def show_cam(self):
+        self.buttonPhoto.hide()
         self.action_done = True
+        self.camView.hide()
         self.veilleButton.hide()
         self.widgetPrint.hide()   
         self.widgetPhoto.show()    
         self.lookUp.hide()
 
+        self.cam_thread = CamThread(self)
+        self.cam_thread.start()
+
         if self.dark:
             self.relais.on('light')
-
-        self.cam_thread = CamThread(self)
-        # self.cam_thread.changePixmap.connect(self.set_image)
-        # self.cam_thread.init(self)
-        self.cam_thread.start()
 
         self.stop_veille()
         self.veille_countdown = True
@@ -226,14 +262,14 @@ class PhotoBooth(Ui_PhotoBooth):
 
     def veille_thread(self):
         timer = 0
-        while timer < 60 and self.veille_countdown:
+        while timer < 60 and self.veille_countdown and self.camera.PhotoBoothWindow.is_open():
             timer += 1
             if self.action_done:
                 timer = 0
                 self.action_done = False
-            print("Veille thread - ", str(timer))
+            # print("Veille thread - ", str(timer))
             sleep(1)
-        if self.veille_countdown:
+        if timer == 60:
             self.mode_veille()
 
     def mode_veille(self):
@@ -249,33 +285,33 @@ class PhotoBooth(Ui_PhotoBooth):
         
     def stop_cam(self):
         # print(cam_thread)
-        self.camView.clear()
-        self.widgetPhoto.hide()  
         try:
             self.cam_thread.stop()
             self.cam_thread.quit()
             del self.cam_thread
         except AttributeError:
             pass
-        print("Closing")
+        # print("Closing")
         # print(cam_thread)
         
     def take_photo(self):
 
-        self.photo_countdown = False
-
         old_pic = Photo()
-        
-        self.camera.trigger()
-        
-        self.stop_cam()
-        self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '0'))
+
+        self.camera.trigger_on()
+        self.flash.show()
+        sleep(0.4)
+        self.flash.hide()
+        self.camera.trigger_off()
+        self.widgetPhoto.hide()
+        self.loading.show()
         self.countdown.hide()
-        self.buttonPhoto.show()
-        
+
         self.lastPhoto = Photo()
         while self.lastPhoto.path == old_pic.path:
             self.lastPhoto = Photo()
+
+        # self.buttonPhoto.show()
 
         if self.lastPhoto.is_darker(1600):
             self.relais.on('light')
@@ -300,7 +336,7 @@ class PhotoBooth(Ui_PhotoBooth):
     def send2printer(self):
         self.action_done = True
         for _ in range(self.nbPrint):
-            printer(self.lastPhoto, self.ROTATE_180)
+            printer(self.lastPhoto)
 
         self.printer_fan_thread = Thread(target=self.printer_fan_controler)
         self.printer_fan_thread.start()
@@ -314,9 +350,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.show_compt_print()
 
     def set_compt_print(self, n):
-        print(self.comptPrint)
         self.comptPrint -= n
-        print(self.comptPrint)
         with open("compteur.txt", "w") as file:
             file.write(str(self.comptPrint))
         self.show_compt_print()
@@ -377,8 +411,17 @@ class Photo:
         self.QImage = QPixmap.fromImage(ImageQt(transparent))
 
 
-if __name__ == '__main__':
+def run_photobooth():
+    setproctitle("PhotoBooth-run")
+
+    with open("run.txt", "w") as file:
+        file.write("1")
+
     pythoncom.CoInitialize()
     new_app = QtWidgets.QApplication(sys.argv)
-    PhotoBooth = PhotoBooth(new_app)
+    PhotoBooth(new_app)
     sys.exit(new_app.exec_())
+
+
+if __name__ == '__main__':
+    run_photobooth()

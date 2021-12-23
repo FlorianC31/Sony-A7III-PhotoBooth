@@ -2,8 +2,10 @@ import keyboard
 import time
 import win32com.client
 import win32gui
+import win32con
 import pywinauto
 import os
+import traceback
 import sys
 
 from threading import Thread
@@ -24,13 +26,20 @@ class Window:
             shell.SendKeys('%')
             while not self.is_focus():
                 time.sleep(0.1)
+                win32gui.ShowWindow(self.get_hwnd(), win32con.SW_NORMAL)
                 win32gui.SetForegroundWindow(self.get_hwnd())
         else:
             print('ERROR: Enable to show ', self.name, ' because it is not opened')
-            sys.exit(1)
+            traceback.print_tb()
+            sys.exit(0)
 
     def get_hwnd(self):
         return win32gui.FindWindow(None, self.name)
+
+    def close(self):
+        print("Fermeture de", self.name)
+        # win32gui.CloseWindow(self.get_hwnd())
+        win32gui.PostMessage(self.get_hwnd(), win32con.WM_CLOSE, 0, 0)
 
     def x_move(self, x, absolute=True):
         if self.is_open():
@@ -63,8 +72,7 @@ class Window:
             rect = win32gui.GetWindowRect(self.get_hwnd())
             x = rect[0] + int(x_relative * self.scale)
             y = rect[1] + int(y_relative * self.scale)
-            print(rect)
-    
+
             if double_click:
                 pywinauto.mouse.double_click(button='left', coords=(x, y))
             else:
@@ -72,14 +80,17 @@ class Window:
 
         else:
             print('ERROR:', self.name, 'is not opened')
-            sys.exit(1)
+            sys.exit(0)
 
     def is_focus(self):
         return win32gui.GetForegroundWindow() == self.get_hwnd()
 
-    def set_x_init(self):
-        rect = win32gui.GetWindowRect(self.get_hwnd())
-        self.x_init = rect[0]
+    def set_x_init(self, x=0):
+        if x == 0:
+            rect = win32gui.GetWindowRect(self.get_hwnd())
+            self.x_init = rect[0]
+        else:
+            self.x_init = x
     
     
 class Remote(Window):
@@ -102,10 +113,7 @@ class Remote(Window):
     def acknowledge_disconect(self):
         self.click(354, 132)
         time.sleep(0.1)
-    
-    def close(self):
-        self.click(841, 340)
-        
+
     def refresh(self):
         self.click(712, 340)
         time.sleep(5)
@@ -155,34 +163,52 @@ class Camera:
         if self.ViewerWindow.is_open():
             self.ViewerWindow.x_move(300)
         self.running = False
+        self.RemoteWindow.close()
 
-    def trigger(self):
-        if self.ViewerWindow.is_open():
-            self.ViewerWindow.close()
+    def trigger_on(self):
+        self.RemoteWindow.x_move(6000, False)
+        self.RemoteWindow.show()
+        keyboard.press('&')
 
+    def trigger_off(self):
+        keyboard.release('&')
+        self.PhotoBoothWindow.show()
+        self.RemoteWindow.x_move(self.RemoteWindow.x_init)
+
+    def focus(self, preshot=False):
         self.RemoteWindow.x_move(6000, False)
         self.RemoteWindow.show()
 
-        keyboard.press('&')
-        time.sleep(2)
-        keyboard.release('&')
-        
+        if preshot:
+            keyboard.press('g')
+            time.sleep(0.5)
+            keyboard.release('g')
+        else:
+            keyboard.press('g')
+            time.sleep(2)
+            keyboard.release('g')
+            keyboard.press('g')
+            keyboard.release('g')
+
         self.PhotoBoothWindow.show()
         self.RemoteWindow.x_move(self.RemoteWindow.x_init)
 
     def launch(self):
         while self.chek_connect_th:
-            print("Le thread tourne encore")
+            pass  # print("Le thread tourne encore")
         # Open the main Imaging Edge programm
         nb_iter = 1
         if not self.ImagingWindow.is_open():
-            print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
+            print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
             os.popen(r"C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
             while not self.ImagingWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Imagine Edge Desktop - Tentative " + str(nb_iter))
-            print("Imagine Edge Desktop est ouvert")
+                print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+            print("Imaging Edge Desktop est ouvert")
+
+        self.ImagingWindow.show()
+        self.ImagingWindow.x_move(800)
 
         if not self.RemoteWindow.is_open():
             time.sleep(1)
@@ -192,21 +218,22 @@ class Camera:
                 time.sleep(1)
 
             nb_iter = 1
-            print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+            print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
             self.ImagingWindow.click(665, 160)
             while not self.RemoteWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Remote Window - Tentative " + str(nb_iter))
+                print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
             print("Remote Window est ouvert")
-        
+        self.RemoteWindow.show()
+
         # If the Remote application can not find the Camera and send an error message
         time.sleep(2)
         if not self.RemoteWindow.is_operationnal():
             print("APN pas encore opérationnel")
             self.RemoteWindow.launch_cam()
 
-        self.RemoteWindow.set_x_init()
+        self.RemoteWindow.set_x_init(1200)
 
         self.close_liveview()
 
@@ -214,6 +241,7 @@ class Camera:
         # self.chek_connect_th.start()
 
     def close_liveview(self):
+        time.sleep(2)
         rect = win32gui.GetWindowRect(self.RemoteWindow.get_hwnd())
         width = int((rect[2] - rect[0]) / self.scale)
         if width > 500:
@@ -224,6 +252,10 @@ class Camera:
             keyboard.press('l')
             keyboard.release('l')
             keyboard.release('Ctrl')
+
+        # Appui sur le bouton de déclenchement dans le cas ou l'AF est vérouillé suite à un bug précédent
+        keyboard.press('&')
+        keyboard.release('&')
 
     def chek_connect(self):
         while not self.RemoteWindow.is_disconet_msg() and self.running:
