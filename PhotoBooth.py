@@ -43,6 +43,7 @@ DEVELOPERMODE = False
 ROTATE_180 = True
 WATERMARK = True
 SCALE = 1.5
+MAX_ISO=480  # 480 for Rx10-III / 1600 for a7-III
 
 WTMRK = r"ressources\logo_blanc_sur_transparent.png"
 SIZE = (6, 4)  # in inch
@@ -313,7 +314,7 @@ class PhotoBooth(Ui_PhotoBooth):
 
         # self.buttonPhoto.show()
 
-        if self.lastPhoto.is_darker(1600):
+        if self.lastPhoto.is_darker(MAX_ISO):
             self.relais.on('light')
             self.dark = True
         self.lastPhoto.watermark()
