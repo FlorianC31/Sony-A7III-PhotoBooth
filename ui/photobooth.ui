@@ -103,7 +103,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Amatic</family>
+    <family>Never Say Never</family>
     <pointsize>20</pointsize>
     <weight>75</weight>
     <bold>true</bold>
@@ -145,14 +145,15 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>36</pointsize>
+     <family>Never Say Never</family>
+     <pointsize>20</pointsize>
     </font>
    </property>
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>654 photos restantes</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;654&lt;br/&gt;photos&lt;br/&gt;restantes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -191,7 +192,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(222, 180, 163, 255), stop:1 rgba(242, 199, 183, 255));</string>
+    <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(167, 209, 178, 255), stop:1 rgba(182, 228, 194, 255));</string>
    </property>
    <property name="text">
     <string/>
@@ -217,6 +218,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Never Say Never</family>
       <pointsize>100</pointsize>
      </font>
     </property>
@@ -238,7 +240,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Amatic</family>
+      <family>Never Say Never</family>
       <pointsize>60</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -266,6 +268,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
+      <family>Never Say Never</family>
       <pointsize>72</pointsize>
      </font>
     </property>
@@ -300,6 +303,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
+      <family>Never Say Never</family>
       <pointsize>72</pointsize>
      </font>
     </property>
@@ -334,6 +338,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
+      <family>Never Say Never</family>
       <pointsize>72</pointsize>
      </font>
     </property>
@@ -368,7 +373,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
-      <family>Amatic</family>
+      <family>Never Say Never</family>
       <pointsize>60</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -427,6 +432,11 @@ color: rgb(255, 255, 255);</string>
       <height>70</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Never Say Never</family>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;</string>
     </property>
@@ -445,6 +455,12 @@ color: rgb(255, 255, 255);</string>
       <width>150</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Never Say Never</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>No warning/error</string>
@@ -471,6 +487,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
+      <family>Never Say Never</family>
       <pointsize>72</pointsize>
      </font>
     </property>
@@ -498,14 +515,17 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>200</y>
+      <y>250</y>
       <width>1620</width>
       <height>700</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>500</pointsize>
+      <family>Never Say Never</family>
+      <pointsize>450</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -542,7 +562,8 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>160</pointsize>
+      <family>Never Say Never</family>
+      <pointsize>120</pointsize>
      </font>
     </property>
     <property name="text">
@@ -568,12 +589,13 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="font">
     <font>
-     <family>Amatic</family>
+     <family>Never Say Never</family>
      <pointsize>72</pointsize>
+     <italic>false</italic>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(222, 180, 163, 255), stop:1 rgba(242, 199, 183, 255));
+    <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(167, 209, 178, 255), stop:1 rgba(182, 228, 194, 255));
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
@@ -599,6 +621,29 @@ color: rgb(255, 255, 255);</string>
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="flash">
+   <property name="geometry">
+    <rect>
+     <x>-20</x>
+     <y>-20</y>
+     <width>1960</width>
+     <height>1120</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Never Say Never</family>
+     <pointsize>72</pointsize>
+     <italic>false</italic>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>loading</zorder>
   <zorder>widgetPhoto</zorder>
@@ -607,6 +652,7 @@ color: rgb(255, 255, 255);</string>
   <zorder>logo2</zorder>
   <zorder>compteur</zorder>
   <zorder>widgetDevelopper</zorder>
+  <zorder>flash</zorder>
   <zorder>veilleButton</zorder>
  </widget>
  <resources/>
