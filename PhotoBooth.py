@@ -332,7 +332,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.show_compt_print()
 
         with open("Printlog.csv", "a") as csvFile:
-            line = [str(datetime.now()), self.lastPhoto.name, str(n)]
+            line = [str(datetime.now()), self.lastPhoto.name, str(n) + '\n']
             csvFile.write(';'.join(line))
 
     def show_compt_print(self):
