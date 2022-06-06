@@ -14,6 +14,7 @@ from Webcam import CamThread
 from remoteTrigger import Camera
 from printer import printer
 from relais import Relais
+from logger import log
 
 from PIL import Image, ExifTags
 from PIL.ImageQt import ImageQt
@@ -87,6 +88,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.upper_fan_th.start()
 
     def init_ui(self):
+        log("Note", "Initialisation de l'UI", "PhotoBooth")
 
         self.setupUi(self.MainWindow)
 
@@ -97,12 +99,12 @@ class PhotoBooth(Ui_PhotoBooth):
         self.movie.start()
         
         self.buttonExit.clicked.connect(lambda: self.close_window())
-        self.buttonRestart.clicked.connect(lambda: self.show_cam())
+        self.buttonRestart.clicked.connect(lambda: self.show_cam(1))
         self.buttonPrinter.clicked.connect(lambda: self.send2printer())
         self.buttonDecrease.clicked.connect(lambda: self.change_nb_print(-1))
         self.buttonIncrease.clicked.connect(lambda: self.change_nb_print(1))
-        self.buttonCancel.clicked.connect(lambda: self.mode_veille())
-        self.veilleButton.clicked.connect(lambda: self.show_cam())
+        self.buttonCancel.clicked.connect(lambda: self.mode_veille(0))
+        self.veilleButton.clicked.connect(lambda: self.show_cam(2))
         self.buttonPhoto.clicked.connect(lambda: self.start_countdown())
         
         self.widgetPrint.hide()
@@ -114,13 +116,14 @@ class PhotoBooth(Ui_PhotoBooth):
         self.get_compt_print()
 
         self.MainWindow.show()
-        self.show_cam()
+        self.show_cam(0)
         
         if not DEVELOPERMODE:
             self.full_screen()
             # self.widgetDevelopper.hide()
 
     def set_scale(self):
+        log("Note", "Mise a l'echelle des tailles de police", "PhotoBooth")
         self.sef_font(self.MainWindow)
         self.sef_font(self.compteur)
         self.sef_font(self.nbPrintLabel)
@@ -154,6 +157,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.camView.setPixmap(QPixmap.fromImage(image))
 
     def full_screen(self):
+        log("Note", "Passeage en plein ecran", "PhotoBooth")
         if self.fullscreen:
             self.MainWindow.showNormal()
         else:
@@ -161,6 +165,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.fullscreen = not self.fullscreen
         
     def close_window(self):
+        log("Admin", "Click sur le bouton de fermeture", "PhotoBooth")
         with open("run.txt", "w") as file:
             file.write("0")
         self.stop_veille()
@@ -170,6 +175,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.MainWindow.close()
         
     def show_photo(self):
+        log("Note", "Affichage de la derniere photo", "PhotoBooth")
         pixmap = self.lastPhoto.QImage
 
         self.viewer.setPixmap(pixmap)
@@ -179,6 +185,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.change_nb_print(0)
 
     def start_countdown(self):
+        log("user", "Click sur le bouton de prise de photo", "PhotoBooth")
         self.action_done = True
         self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(COUNTDOWN)))
         self.countdown.show()
@@ -195,6 +202,7 @@ class PhotoBooth(Ui_PhotoBooth):
             self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(cd)))
 
             if cd == COUNTDOWN - 2 and COUNTDOWN > 4 :
+                log("Note", "Focus Photo initial", "PhotoBooth")
                 focus_thread = Thread(target=self.camera.focus)
                 focus_thread.start()
 
@@ -202,6 +210,7 @@ class PhotoBooth(Ui_PhotoBooth):
                 self.loading.hide()
 
                 self.camView.hide()
+                log("Note", "Arret du flux video", "PhotoBooth")
                 stop_thread = Thread(target=self.stop_cam)
                 stop_thread.start()
                 self.camView.clear()
@@ -210,6 +219,7 @@ class PhotoBooth(Ui_PhotoBooth):
                 self.camView.hide()
 
             elif cd == 1:
+                log("Note", "Focus Photo final", "PhotoBooth")
                 focus_thread = Thread(target=self.camera.focus, args=[True])
                 focus_thread.start()
 
@@ -217,7 +227,12 @@ class PhotoBooth(Ui_PhotoBooth):
 
         self.camView.show()
 
-    def show_cam(self):
+    def show_cam(self, boutton):
+        if boutton == 1:
+            log("User", "Click sur le bouton de relance photo", "PhotoBooth")
+        elif boutton == 2:
+            log("User", "Click sur le bouton de sortie de la mise en veille", "PhotoBooth")
+
         self.buttonPhoto.hide()
         self.action_done = True
         self.camView.hide()
@@ -226,6 +241,8 @@ class PhotoBooth(Ui_PhotoBooth):
         self.widgetPhoto.show()    
         self.lookUp.hide()
 
+
+        log("Note", "Lancement du flux video", "PhotoBooth")
         self.cam_thread = CamThread(self)
         self.cam_thread.start()
 
@@ -247,9 +264,12 @@ class PhotoBooth(Ui_PhotoBooth):
             # print("Veille thread - ", str(timer))
             sleep(1)
         if timer == 60:
-            self.mode_veille()
+            log("User", "Mise en veille", "Veille")
+            self.mode_veille(0)
 
-    def mode_veille(self):
+    def mode_veille(self, button):
+        if button == 1:
+            log("user", "Click sur le bouton de mise en veille", "PhotoBooth")
         self.stop_cam()
         self.veilleButton.show()
         self.relais.off('light')
@@ -272,6 +292,7 @@ class PhotoBooth(Ui_PhotoBooth):
         # print(cam_thread)
         
     def take_photo(self):
+        log("Note", "Prise de la photo", "PhotoBooth")
 
         old_pic = Photo()
 
@@ -291,6 +312,7 @@ class PhotoBooth(Ui_PhotoBooth):
         # self.buttonPhoto.show()
 
         if self.lastPhoto.is_darker(MAX_ISO):
+            log("user", "ISO trop eleve, allumage de la lumiere", "PhotoBooth")
             self.relais.on('light')
             self.dark = True
         self.lastPhoto.watermark()
@@ -298,6 +320,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.show_photo()
 
     def change_nb_print(self, i):
+        log("user", "Click sur les boutons de changement du nombre d'impressions", "PhotoBooth")
         self.action_done = True
         if i == 0:
             self.nbPrint = 1
@@ -320,11 +343,14 @@ class PhotoBooth(Ui_PhotoBooth):
         button.setStyleSheet("background-color: transparent;\ncolor: rgb(127, 127, 127);")
 
     def printer_fan_controler(self):
+        log("Note", "Mise en route du ventilo de l'imprimante", "PhotoBooth")
         self.relais.on('fanPrinter')
         sleep(60)
         self.relais.off('fanPrinter')
+        log("Note", "Extinction du ventilo de l'imprimante", "PhotoBooth")
 
     def send2printer(self):
+        log("user", "Click sur le bouton d'impression", "PhotoBooth")
         self.action_done = True
         for _ in range(self.nbPrint):
             printer(self.lastPhoto)
@@ -333,7 +359,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.printer_fan_thread.start()
 
         self.set_compt_print(self.nbPrint)
-        self.show_cam()
+        self.show_cam(0)
 
     def get_compt_print(self):
         with open("compteur.txt", "r") as file:
@@ -403,7 +429,10 @@ class Photo:
 
 
 def run_photobooth():
-    setproctitle("PhotoBooth-run")
+    process_name = "PhotoBooth-run"
+    setproctitle(process_name)
+
+    log("WAYPOINT", "Lancement d'un nouveau processus " + process_name, process_name)
 
     with open("run.txt", "w") as file:
         file.write("1")
@@ -411,6 +440,7 @@ def run_photobooth():
     pythoncom.CoInitialize()
     new_app = QtWidgets.QApplication(sys.argv)
     PhotoBooth(new_app)
+    log("WAYPOINT", "Fermeture normale du processus " + process_name, process_name)
     sys.exit(new_app.exec_())
 
 

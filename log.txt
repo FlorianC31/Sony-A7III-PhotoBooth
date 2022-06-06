@@ -1,0 +1,112 @@
+2022-06-06 23:18:30.607132 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:18:31.475900 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:18:36.479494 - PhotoBooth-run - WAYPOINT: Fermeture normale  du processus PhotoBooth-run
+2022-06-06 23:19:39.002312 - Module remoteTrigger - Note: ERROR: Enable to show Remote because it is not opened
+2022-06-06 23:19:42.004954 - PhotoBooth-Master - WAYPOINT: Fermeture Normale du PhotoBooth initiee par l'administrateur
+2022-06-06 23:28:39.394861 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:28:41.583629 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:28:42.987483 - Module remoteTrigger - Info: Ouverture de Remote Window - 5%
+2022-06-06 23:28:44.721877 - Module remoteTrigger - Info: Ouverture de Remote Window - 10%
+2022-06-06 23:28:45.762516 - Module remoteTrigger - Info: Ouverture de Remote Window - 15%
+2022-06-06 23:28:46.833822 - Module remoteTrigger - Info: Ouverture de Remote Window - 20%
+2022-06-06 23:28:47.969015 - Module remoteTrigger - Info: Ouverture de Remote Window - 25%
+2022-06-06 23:28:48.012904 - Module remoteTrigger - Note: Remote Window est ouvert
+2022-06-06 23:28:50.703079 - Module remoteTrigger - Info: APN pas encore opérationnel
+2022-06-06 23:28:59.713162 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:28:59.921041 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:01.930245 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:01.968663 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:03.768607 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:08.475731 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:08.555570 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:10.461936 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:10.498202 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:12.185615 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:16.894677 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:17.011317 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:18.954074 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:18.982634 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:20.649507 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:25.361403 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:25.447473 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:27.391343 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:27.429627 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:29.127874 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:33.844292 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:33.965259 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:35.858979 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:35.887223 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:37.612958 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:42.331999 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:42.408650 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:44.290868 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:44.319046 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:46.040577 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:50.712002 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:50.830438 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:29:52.770478 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:29:52.808369 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:29:54.510608 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:29:59.233399 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:29:59.309281 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:01.785279 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:01.822088 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:03.604147 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:08.260222 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:08.381627 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:10.262755 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:10.308199 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:12.016658 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:16.722733 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:16.808174 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:18.688446 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:18.718646 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:20.386910 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:25.073969 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:25.192165 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:27.069477 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:27.097000 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:28.814941 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:33.547470 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:33.623657 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:35.486008 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:35.529755 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:37.182251 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:41.887250 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:42.005676 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:43.896035 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:43.927936 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:45.650341 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:50.345151 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:50.425197 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:30:52.318219 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:30:52.347825 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:30:54.023634 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:30:58.818975 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:30:58.934087 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:31:00.831639 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:31:00.919877 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:31:02.655251 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:31:07.376564 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:31:07.463176 - PhotoBooth - Note: Mise à l'echelle des tailles de police
+2022-06-06 23:31:09.346052 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
+2022-06-06 23:31:09.381784 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:31:11.104894 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:32:03.732171 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-06 23:32:05.027016 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-06 23:32:09.691441 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-06 23:32:09.890643 - PhotoBooth - Note: Mise a l'echelle des tailles de police
+2022-06-06 23:32:09.999781 - PhotoBooth - Note: Lancement du flux video
+2022-06-06 23:32:10.035995 - PhotoBooth - Note: Passeage en plein ecran
+2022-06-06 23:32:10.065756 - PhotoBooth-run - WAYPOINT: Fermeture normale du processus PhotoBooth-run
+2022-06-06 23:32:21.452319 - PhotoBooth - user: Click sur le bouton de prise de photo
+2022-06-06 23:32:23.485995 - PhotoBooth - Note: Focus Photo initial
+2022-06-06 23:32:25.513988 - PhotoBooth - Note: Arret du flux video
+2022-06-06 23:32:26.546913 - PhotoBooth - Note: Focus Photo final
+2022-06-06 23:32:27.630219 - PhotoBooth - Note: Prise de la photo
+2022-06-06 23:32:29.840950 - PhotoBooth - user: ISO trop eleve, allumage de la lumiere
+2022-06-06 23:32:30.444423 - PhotoBooth - Note: Affichage de la derniere photo
+2022-06-06 23:32:30.478333 - PhotoBooth - user: Click sur les boutons de changement du nombre d'impressions
+2022-06-06 23:32:32.008834 - PhotoBooth - Admin: Click sur le bouton de fermeture
+2022-06-06 23:32:32.309677 - Module remoteTrigger - Note: Fermeture deRemote
+2022-06-06 23:32:35.122226 - PhotoBooth-Master - WAYPOINT: Fermeture Normale du PhotoBooth initiee par l'administrateur

@@ -1,0 +1,3 @@
+aggrandir le nombre de photos restantes
+bruit de déclenchement
+recherche du probleme au lancement de Qt

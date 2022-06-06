@@ -9,6 +9,7 @@ import traceback
 import sys
 
 from threading import Thread
+from logger import log
 
 
 class Window:
@@ -29,7 +30,8 @@ class Window:
                 win32gui.ShowWindow(self.get_hwnd(), win32con.SW_NORMAL)
                 win32gui.SetForegroundWindow(self.get_hwnd())
         else:
-            print('ERROR: Enable to show ', self.name, ' because it is not opened')
+            # print('ERROR: Enable to show ', self.name, ' because it is not opened')
+            log("Warning", 'Enable to show ' + self.name + ' because it is not opened', "Module remoteTrigger")
             traceback.print_tb()
             sys.exit(0)
 
@@ -37,7 +39,8 @@ class Window:
         return win32gui.FindWindow(None, self.name)
 
     def close(self):
-        print("Fermeture de", self.name)
+        # print("Fermeture de", self.name)
+        log("Note", 'Fermeture de ' + self.name, "Module remoteTrigger")
         # win32gui.CloseWindow(self.get_hwnd())
         win32gui.PostMessage(self.get_hwnd(), win32con.WM_CLOSE, 0, 0)
 
@@ -79,7 +82,8 @@ class Window:
                 pywinauto.mouse.click(button='left', coords=(x, y))
 
         else:
-            print('ERROR:', self.name, 'is not opened')
+            # print('ERROR:', self.name, 'is not opened')
+            log("ERROR", self.name + ' is not opened', "Module remoteTrigger")
             sys.exit(0)
 
     def is_focus(self):
@@ -199,13 +203,16 @@ class Camera:
         # Open the main Imaging Edge programm
         nb_iter = 1
         if not self.ImagingWindow.is_open():
-            print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+            # print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+            log("Info", "Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%", "Module remoteTrigger")
             os.popen(r"C:\Program Files\Sony\Imaging Edge Desktop\ied.exe")
             while not self.ImagingWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
-            print("Imaging Edge Desktop est ouvert")
+                # print("Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%")
+                log("Info", "Ouverture de Imaging Edge Desktop - " + str(int(nb_iter/20*100)) + "%", "Module remoteTrigger")
+            # print("Imaging Edge Desktop est ouvert")
+            log("Note", "Imaging Edge Desktop est ouvert", "Module remoteTrigger")
 
         self.ImagingWindow.show()
         self.ImagingWindow.x_move(800)
@@ -218,19 +225,23 @@ class Camera:
                 time.sleep(1)
 
             nb_iter = 1
-            print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
+            # print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
+            log("Info", "Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%", "Module remoteTrigger")
             self.ImagingWindow.click(665, 160)
             while not self.RemoteWindow.is_open():
                 time.sleep(1)
                 nb_iter += 1
-                print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
-            print("Remote Window est ouvert")
+                # print("Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%")
+                log("Info", "Ouverture de Remote Window - " + str(int(nb_iter/20*100)) + "%", "Module remoteTrigger")
+            # print("Remote Window est ouvert")
+            log("Note", "Remote Window est ouvert", "Module remoteTrigger")
         self.RemoteWindow.show()
 
         # If the Remote application can not find the Camera and send an error message
         time.sleep(2)
         if not self.RemoteWindow.is_operationnal():
-            print("APN pas encore opérationnel")
+            # print("APN pas encore operationnel")
+            log("Info", "APN pas encore opérationnel", "Module remoteTrigger")
             self.RemoteWindow.launch_cam()
 
         self.RemoteWindow.set_x_init(1200)
