@@ -43,7 +43,8 @@ DEVELOPERMODE = False
 ROTATE_180 = True
 WATERMARK = True
 SCALE = 1.5
-MAX_ISO=480  # 480 for Rx10-III / 1600 for a7-III
+MAX_ISO = 480  # 480 for Rx10-III / 1600 for a7-III
+COUNTDOWN = 6  # 10s
 
 WTMRK = r"ressources\logo_blanc_sur_transparent.png"
 SIZE = (6, 4)  # in inch
@@ -179,21 +180,21 @@ class PhotoBooth(Ui_PhotoBooth):
 
     def start_countdown(self):
         self.action_done = True
-        self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", '10'))
+        self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(COUNTDOWN)))
         self.countdown.show()
         self.buttonPhoto.hide()
         self.cd_thread = Thread(target=self.countdown_thread)
         self.cd_thread.start()
 
     def countdown_thread(self):
-        cd = 10
+        cd = COUNTDOWN
         while cd > 0:
             sleep(1)
             cd -= 1
 
             self.countdown.setText(QtCore.QCoreApplication.translate("MainWindow", str(cd)))
 
-            if cd == 8:
+            if cd == COUNTDOWN - 2 and COUNTDOWN > 4 :
                 focus_thread = Thread(target=self.camera.focus)
                 focus_thread.start()
 
@@ -303,6 +304,20 @@ class PhotoBooth(Ui_PhotoBooth):
         else:
             self.nbPrint = min(max(1, self.nbPrint+i), 6)
         self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.nbPrint)))
+
+        if self.nbPrint == 1:
+            self.gray(self.buttonDecrease)
+        elif self.nbPrint == 6:
+            self.gray(self.buttonIncrease)
+        else:
+            self.ungray(self.buttonDecrease)
+            self.ungray(self.buttonIncrease)
+
+    def ungray(self, button):
+        button.setStyleSheet("background-color: transparent;\ncolor: rgb(255, 255, 255);")
+
+    def gray(self, button):
+        button.setStyleSheet("background-color: transparent;\ncolor: rgb(127, 127, 127);")
 
     def printer_fan_controler(self):
         self.relais.on('fanPrinter')
