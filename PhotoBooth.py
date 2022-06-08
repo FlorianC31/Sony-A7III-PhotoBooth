@@ -242,7 +242,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.lookUp.hide()
 
 
-        log("Note", "Lancement du flux video", "PhotoBooth")
+        log("Note", "Lancement du thread de Webcam", "PhotoBooth")
         self.cam_thread = CamThread(self)
         self.cam_thread.start()
 
@@ -279,17 +279,16 @@ class PhotoBooth(Ui_PhotoBooth):
         if self.veille_th:
             while self.veille_th.is_alive():
                 pass
+            log("Note", "Sortie de la veille", "PhotoBooth")
         
     def stop_cam(self):
-        # print(cam_thread)
         try:
             self.cam_thread.stop()
             self.cam_thread.quit()
             del self.cam_thread
         except AttributeError:
             pass
-        # print("Closing")
-        # print(cam_thread)
+        log("Note", "Fermeture du thread de la webcam", "PhotoBooth")
         
     def take_photo(self):
         log("Note", "Prise de la photo", "PhotoBooth")
@@ -305,26 +304,31 @@ class PhotoBooth(Ui_PhotoBooth):
         self.loading.show()
         self.countdown.hide()
 
+        log("Note", "Creation du fichier photo", "PhotoBooth")
         self.lastPhoto = Photo()
         while self.lastPhoto.path == old_pic.path:
             self.lastPhoto = Photo()
 
         # self.buttonPhoto.show()
 
+        log("Note", "Check des ISO", "PhotoBooth")
         if self.lastPhoto.is_darker(MAX_ISO):
-            log("user", "ISO trop eleve, allumage de la lumiere", "PhotoBooth")
+            log("Note", "ISO trop eleve, allumage de la lumiere", "PhotoBooth")
             self.relais.on('light')
             self.dark = True
+
+        log("Note", "Ajout du watermark", "PhotoBooth")
         self.lastPhoto.watermark()
 
+        log("Note", "Affichage de la derniere photo", "PhotoBooth")
         self.show_photo()
 
     def change_nb_print(self, i):
-        log("user", "Click sur les boutons de changement du nombre d'impressions", "PhotoBooth")
         self.action_done = True
         if i == 0:
             self.nbPrint = 1
         else:
+            log("user", "Click sur les boutons de changement du nombre d'impressions", "PhotoBooth")
             self.nbPrint = min(max(1, self.nbPrint+i), 6)
         self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.nbPrint)))
 
@@ -350,7 +354,7 @@ class PhotoBooth(Ui_PhotoBooth):
         log("Note", "Extinction du ventilo de l'imprimante", "PhotoBooth")
 
     def send2printer(self):
-        log("user", "Click sur le bouton d'impression", "PhotoBooth")
+        log("user", "Lancement de l'impression de " + str(self.nbPrint) + " photos", "PhotoBooth")
         self.action_done = True
         for _ in range(self.nbPrint):
             printer(self.lastPhoto)
@@ -438,7 +442,10 @@ def run_photobooth():
         file.write("1")
 
     pythoncom.CoInitialize()
+    log("INFO", "Flag1", process_name)
     new_app = QtWidgets.QApplication(sys.argv)
+    log("INFO", "Flag2", process_name)
+
     PhotoBooth(new_app)
     log("WAYPOINT", "Fermeture normale du processus " + process_name, process_name)
     sys.exit(new_app.exec_())

@@ -15,7 +15,7 @@ bcolors = {
 
 def log(type, msg, src):
     
-    lineLog = str(datetime.now()) + " - " + src + " - " + type + ": " + msg
+    lineLog = str(datetime.now()) + " - " + type + " - " + src + ": " + msg
 
     if type in bcolors:
         linePrint = str(datetime.now()) + " - " + src + " - " + f"{bcolors[type]}{type}: {bcolors['ENDC']}" + msg

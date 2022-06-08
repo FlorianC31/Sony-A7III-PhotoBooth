@@ -1,112 +1,870 @@
-2022-06-06 23:18:30.607132 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:18:31.475900 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:18:36.479494 - PhotoBooth-run - WAYPOINT: Fermeture normale  du processus PhotoBooth-run
-2022-06-06 23:19:39.002312 - Module remoteTrigger - Note: ERROR: Enable to show Remote because it is not opened
-2022-06-06 23:19:42.004954 - PhotoBooth-Master - WAYPOINT: Fermeture Normale du PhotoBooth initiee par l'administrateur
-2022-06-06 23:28:39.394861 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:28:41.583629 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:28:42.987483 - Module remoteTrigger - Info: Ouverture de Remote Window - 5%
-2022-06-06 23:28:44.721877 - Module remoteTrigger - Info: Ouverture de Remote Window - 10%
-2022-06-06 23:28:45.762516 - Module remoteTrigger - Info: Ouverture de Remote Window - 15%
-2022-06-06 23:28:46.833822 - Module remoteTrigger - Info: Ouverture de Remote Window - 20%
-2022-06-06 23:28:47.969015 - Module remoteTrigger - Info: Ouverture de Remote Window - 25%
-2022-06-06 23:28:48.012904 - Module remoteTrigger - Note: Remote Window est ouvert
-2022-06-06 23:28:50.703079 - Module remoteTrigger - Info: APN pas encore opérationnel
-2022-06-06 23:28:59.713162 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:28:59.921041 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:01.930245 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:01.968663 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:03.768607 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:08.475731 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:08.555570 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:10.461936 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:10.498202 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:12.185615 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:16.894677 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:17.011317 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:18.954074 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:18.982634 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:20.649507 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:25.361403 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:25.447473 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:27.391343 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:27.429627 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:29.127874 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:33.844292 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:33.965259 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:35.858979 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:35.887223 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:37.612958 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:42.331999 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:42.408650 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:44.290868 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:44.319046 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:46.040577 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:50.712002 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:50.830438 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:29:52.770478 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:29:52.808369 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:29:54.510608 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:29:59.233399 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:29:59.309281 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:01.785279 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:01.822088 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:03.604147 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:08.260222 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:08.381627 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:10.262755 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:10.308199 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:12.016658 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:16.722733 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:16.808174 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:18.688446 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:18.718646 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:20.386910 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:25.073969 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:25.192165 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:27.069477 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:27.097000 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:28.814941 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:33.547470 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:33.623657 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:35.486008 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:35.529755 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:37.182251 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:41.887250 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:42.005676 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:43.896035 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:43.927936 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:45.650341 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:50.345151 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:50.425197 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:30:52.318219 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:30:52.347825 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:30:54.023634 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:30:58.818975 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:30:58.934087 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:31:00.831639 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:31:00.919877 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:31:02.655251 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:31:07.376564 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:31:07.463176 - PhotoBooth - Note: Mise à l'echelle des tailles de police
-2022-06-06 23:31:09.346052 - PhotoBooth-Master - ERROR: Fermeture inopinée du processus PhotoBooth-Run
-2022-06-06 23:31:09.381784 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:31:11.104894 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:32:03.732171 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
-2022-06-06 23:32:05.027016 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
-2022-06-06 23:32:09.691441 - PhotoBooth - Note: Initialisation de l'UI
-2022-06-06 23:32:09.890643 - PhotoBooth - Note: Mise a l'echelle des tailles de police
-2022-06-06 23:32:09.999781 - PhotoBooth - Note: Lancement du flux video
-2022-06-06 23:32:10.035995 - PhotoBooth - Note: Passeage en plein ecran
-2022-06-06 23:32:10.065756 - PhotoBooth-run - WAYPOINT: Fermeture normale du processus PhotoBooth-run
-2022-06-06 23:32:21.452319 - PhotoBooth - user: Click sur le bouton de prise de photo
-2022-06-06 23:32:23.485995 - PhotoBooth - Note: Focus Photo initial
-2022-06-06 23:32:25.513988 - PhotoBooth - Note: Arret du flux video
-2022-06-06 23:32:26.546913 - PhotoBooth - Note: Focus Photo final
-2022-06-06 23:32:27.630219 - PhotoBooth - Note: Prise de la photo
-2022-06-06 23:32:29.840950 - PhotoBooth - user: ISO trop eleve, allumage de la lumiere
-2022-06-06 23:32:30.444423 - PhotoBooth - Note: Affichage de la derniere photo
-2022-06-06 23:32:30.478333 - PhotoBooth - user: Click sur les boutons de changement du nombre d'impressions
-2022-06-06 23:32:32.008834 - PhotoBooth - Admin: Click sur le bouton de fermeture
-2022-06-06 23:32:32.309677 - Module remoteTrigger - Note: Fermeture deRemote
-2022-06-06 23:32:35.122226 - PhotoBooth-Master - WAYPOINT: Fermeture Normale du PhotoBooth initiee par l'administrateur
+
+2022-06-08 23:14:45.335669 - Module Webcam - Note: Connexion du Pixmap au signal
+2022-06-08 23:14:47.142742 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:14:48.128836 - Module Webcam - Note: Connexion du Pixmap au signal
+2022-06-08 23:14:48.905162 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:14:49.081660 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 5%
+2022-06-08 23:14:50.126792 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 10%
+2022-06-08 23:14:51.185759 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 15%
+2022-06-08 23:14:52.282153 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 20%
+2022-06-08 23:14:53.343759 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 25%
+2022-06-08 23:14:54.442450 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 30%
+2022-06-08 23:14:55.519596 - Module remoteTrigger - Info: Ouverture de Imaging Edge Desktop - 35%
+2022-06-08 23:14:55.619793 - Module remoteTrigger - Note: Imaging Edge Desktop est ouvert
+2022-06-08 23:14:56.737718 - Module remoteTrigger - Info: Ouverture de Remote Window - 5%
+2022-06-08 23:14:57.942325 - Module remoteTrigger - Info: Ouverture de Remote Window - 10%
+2022-06-08 23:14:58.976354 - Module remoteTrigger - Info: Ouverture de Remote Window - 15%
+2022-06-08 23:15:00.042757 - Module remoteTrigger - Info: Ouverture de Remote Window - 20%
+2022-06-08 23:15:01.083306 - Module remoteTrigger - Info: Ouverture de Remote Window - 25%
+2022-06-08 23:15:01.158373 - Module remoteTrigger - Note: Remote Window est ouvert
+2022-06-08 23:15:04.842260 - Module remoteTrigger - Info: APN pas encore opï¿½rationnel
+2022-06-08 23:15:13.836523 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-08 23:15:14.140282 - PhotoBooth - Note: Mise a l'echelle des tailles de police
+2022-06-08 23:15:14.274921 - PhotoBooth - Note: Lancement du thread de Webcam
+2022-06-08 23:15:14.308232 - PhotoBooth - Note: Passeage en plein ecran
+2022-06-08 23:15:14.309840 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:15:14.334801 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:15:14.335808 - PhotoBooth-run - WAYPOINT: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:15:14.890515 - Module Webcam - Note: Lancement de la bouche de lecture de la camera
+2022-06-08 23:15:15.943044 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:15:15.981569 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:15:16.260710 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:15:27.801006 - PhotoBooth - user: Click sur le bouton de prise de photo
+2022-06-08 23:15:29.837381 - PhotoBooth - Note: Focus Photo initial
+2022-06-08 23:15:31.865502 - PhotoBooth - Note: Arret du flux video
+2022-06-08 23:15:31.882457 - Module Webcam - Note: Arret de la Webcam
+2022-06-08 23:15:32.855328 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:15:32.884132 - PhotoBooth - Note: Focus Photo final
+2022-06-08 23:15:32.940980 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:15:33.110924 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:15:34.097998 - PhotoBooth - Note: Prise de la photo
+2022-06-08 23:15:36.504287 - PhotoBooth - user: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:15:37.160876 - PhotoBooth - Note: Affichage de la derniere photo
+2022-06-08 23:15:37.188803 - PhotoBooth - user: Click sur les boutons de changement du nombre d'impressions
+2022-06-08 23:15:40.247683 - PhotoBooth - User: Click sur le bouton de relance photo
+2022-06-08 23:15:40.272718 - PhotoBooth - Note: Lancement du thread de Webcam
+2022-06-08 23:15:40.292494 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:15:40.308246 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:15:40.402992 - PhotoBooth - Note: Sortie de la veille
+2022-06-08 23:15:40.801175 - Module Webcam - Note: Lancement de la bouche de lecture de la camera
+2022-06-08 23:15:42.476711 - PhotoBooth - user: Click sur le bouton de prise de photo
+2022-06-08 23:15:44.501084 - PhotoBooth - Note: Focus Photo initial
+2022-06-08 23:15:46.525422 - PhotoBooth - Note: Arret du flux video
+2022-06-08 23:15:46.542772 - Module Webcam - Note: Arret de la Webcam
+2022-06-08 23:15:47.520229 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:15:47.544167 - PhotoBooth - Note: Focus Photo final
+2022-06-08 23:15:47.547496 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:15:47.707634 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:15:48.698555 - PhotoBooth - Note: Prise de la photo
+2022-06-08 23:15:51.061658 - PhotoBooth - user: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:15:51.716579 - PhotoBooth - Note: Affichage de la derniere photo
+2022-06-08 23:15:51.738217 - PhotoBooth - user: Click sur les boutons de changement du nombre d'impressions
+2022-06-08 23:15:54.978198 - PhotoBooth-Master - ERROR: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-08 23:15:55.008119 - PhotoBooth-Master - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:15:55.966676 - Module Webcam - Note: Connexion du Pixmap au signal
+2022-06-08 23:15:57.262954 - PhotoBooth-run - WAYPOINT: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:16:01.948397 - PhotoBooth - Note: Initialisation de l'UI
+2022-06-08 23:16:02.124925 - PhotoBooth - Note: Mise a l'echelle des tailles de police
+2022-06-08 23:16:02.194738 - PhotoBooth - Note: Lancement du thread de Webcam
+2022-06-08 23:16:02.214685 - PhotoBooth - Note: Passeage en plein ecran
+2022-06-08 23:16:02.216680 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:16:02.230644 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:16:02.244606 - PhotoBooth-run - WAYPOINT: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:16:02.745290 - Module Webcam - Note: Lancement de la bouche de lecture de la camera
+2022-06-08 23:16:03.768356 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:16:03.823205 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:16:04.162298 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:16:05.583337 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:16:05.605068 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:16:05.881283 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:16:07.316392 - Module Webcam - Warning: L'image est toute noire, relancement de la camera
+2022-06-08 23:16:07.341326 - Module Webcam - Note: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:16:07.616370 - Module Webcam - Note: Lancement de la capture vidï¿½o
+2022-06-08 23:16:11.530322 - PhotoBooth - Admin: Click sur le bouton de fermeture
+2022-06-08 23:16:12.247472 - PhotoBooth - Note: Sortie de la veille
+2022-06-08 23:16:12.295317 - Module remoteTrigger - Note: Fermeture de Remote
+2022-06-08 23:16:12.313771 - Module Webcam - Note: Arret de la Webcam
+2022-06-08 23:16:13.960711 - PhotoBooth-Master - WAYPOINT: Fermeture Normale du PhotoBooth initiee par l'administrateur
+2022-06-08 23:19:00.685335 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:19:01.293233 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:19:02.630215 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:19:03.317440 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:19:04.642502 - Info - Module remoteTrigger: Ouverture de Remote Window - 5%
+2022-06-08 23:19:05.825448 - Info - Module remoteTrigger: Ouverture de Remote Window - 10%
+2022-06-08 23:19:06.861029 - Info - Module remoteTrigger: Ouverture de Remote Window - 15%
+2022-06-08 23:19:07.920596 - Info - Module remoteTrigger: Ouverture de Remote Window - 20%
+2022-06-08 23:19:08.999176 - Info - Module remoteTrigger: Ouverture de Remote Window - 25%
+2022-06-08 23:19:09.075543 - Note - Module remoteTrigger: Remote Window est ouvert
+2022-06-08 23:19:12.294735 - Info - Module remoteTrigger: APN pas encore opï¿½rationnel
+2022-06-08 23:19:21.304699 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-08 23:19:21.501174 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-08 23:19:21.612875 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:19:21.649776 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:19:21.649070 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-08 23:19:21.669588 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:19:21.671357 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:19:22.195358 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:19:27.663040 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-08 23:19:29.697551 - Note - PhotoBooth: Focus Photo initial
+2022-06-08 23:19:31.724474 - Note - PhotoBooth: Arret du flux video
+2022-06-08 23:19:31.751059 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:19:32.719469 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:19:32.787303 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:19:32.752381 - Note - PhotoBooth: Focus Photo final
+2022-06-08 23:19:32.906995 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:19:33.959195 - Note - PhotoBooth: Prise de la photo
+2022-06-08 23:19:36.263020 - user - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:19:37.157041 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-08 23:20:39.183336 - User - Veille: Mise en veille
+2022-06-08 23:21:32.415560 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-08 23:21:32.460225 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:21:33.836420 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:21:34.655519 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:21:39.486020 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-08 23:21:39.681392 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-08 23:21:39.780176 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:21:39.805933 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-08 23:21:39.806921 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:21:39.852866 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:21:39.855948 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:21:40.352982 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:21:42.132270 - Admin - PhotoBooth: Click sur le bouton de fermeture
+2022-06-08 23:21:42.823256 - Note - PhotoBooth: Sortie de la veille
+2022-06-08 23:21:42.895187 - Note - Module remoteTrigger: Fermeture de Remote
+2022-06-08 23:21:42.913483 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:21:44.346501 - WAYPOINT - PhotoBooth-Master: Fermeture Normale du PhotoBooth initiee par l'administrateur
+2022-06-08 23:51:51.283999 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:51:51.692824 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:51:52.064540 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:51:52.717221 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:51:54.202021 - Info - Module remoteTrigger: Ouverture de Remote Window - 5%
+2022-06-08 23:51:55.383023 - Info - Module remoteTrigger: Ouverture de Remote Window - 10%
+2022-06-08 23:51:56.416005 - Info - Module remoteTrigger: Ouverture de Remote Window - 15%
+2022-06-08 23:51:57.531784 - Info - Module remoteTrigger: Ouverture de Remote Window - 20%
+2022-06-08 23:51:58.601395 - Info - Module remoteTrigger: Ouverture de Remote Window - 25%
+2022-06-08 23:51:58.682216 - Note - Module remoteTrigger: Remote Window est ouvert
+2022-06-08 23:52:01.897069 - Info - Module remoteTrigger: APN pas encore opérationnel
+2022-06-08 23:52:22.675087 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-08 23:52:22.953245 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-08 23:52:23.137567 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:52:23.170694 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:52:23.169696 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-08 23:52:23.195096 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:52:23.191534 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:52:23.713661 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:52:25.246743 - Admin - PhotoBooth: Click sur le bouton de fermeture
+2022-06-08 23:52:26.177800 - Note - PhotoBooth: Sortie de la veille
+2022-06-08 23:52:26.238599 - Note - Module remoteTrigger: Fermeture de Remote
+2022-06-08 23:52:26.259467 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:52:27.686924 - WAYPOINT - PhotoBooth-Master: Fermeture Normale du PhotoBooth initiee par l'administrateur
+
+
+2022-06-08 23:53:12.106316 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:53:12.546600 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:53:12.940479 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:53:14.176919 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:53:15.506357 - Info - Module remoteTrigger: Ouverture de Remote Window - 5%
+2022-06-08 23:53:17.172839 - Info - Module remoteTrigger: Ouverture de Remote Window - 10%
+2022-06-08 23:53:18.272442 - Info - Module remoteTrigger: Ouverture de Remote Window - 15%
+2022-06-08 23:53:19.328952 - Info - Module remoteTrigger: Ouverture de Remote Window - 20%
+2022-06-08 23:53:20.415245 - Info - Module remoteTrigger: Ouverture de Remote Window - 25%
+2022-06-08 23:53:20.472607 - Note - Module remoteTrigger: Remote Window est ouvert
+2022-06-08 23:53:23.638089 - Info - Module remoteTrigger: APN pas encore opérationnel
+2022-06-08 23:53:32.616894 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-08 23:53:32.859652 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-08 23:53:32.970479 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:53:32.999441 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:53:32.999296 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-08 23:53:33.019942 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:53:33.032591 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:53:33.530482 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:53:34.559781 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:53:34.672752 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:53:34.947412 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:53:36.356661 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:53:36.381123 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:53:36.657389 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:53:38.076592 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:53:38.146564 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:53:38.422711 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:53:43.161471 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-08 23:53:45.236917 - Note - PhotoBooth: Focus Photo initial
+2022-06-08 23:53:47.268044 - Note - PhotoBooth: Arret du flux video
+2022-06-08 23:53:47.298193 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:53:48.299617 - Note - PhotoBooth: Focus Photo final
+2022-06-08 23:53:49.407636 - Note - PhotoBooth: Prise de la photo
+2022-06-08 23:53:51.685893 - user - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:53:52.271461 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-08 23:53:59.888028 - User - PhotoBooth: Click sur le bouton de relance photo
+2022-06-08 23:53:59.917948 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:53:59.936897 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:53:59.977554 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:00.117158 - Note - PhotoBooth: Sortie de la veille
+2022-06-08 23:54:00.469696 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:54:01.499539 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:54:01.602264 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:54:01.873118 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:03.291976 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:54:03.317936 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:54:03.589348 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:05.002466 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:54:05.074654 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:54:05.347384 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:07.466192 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-08 23:54:09.502269 - Note - PhotoBooth: Focus Photo initial
+2022-06-08 23:54:11.530048 - Note - PhotoBooth: Arret du flux video
+2022-06-08 23:54:11.558952 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:54:12.581324 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:54:12.560854 - Note - PhotoBooth: Focus Photo final
+2022-06-08 23:54:12.671758 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:54:12.733200 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:13.703305 - Note - PhotoBooth: Prise de la photo
+2022-06-08 23:54:15.993126 - user - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:54:16.560923 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-08 23:54:26.074912 - user - PhotoBooth: Click sur les boutons de changement du nombre d'impressions
+2022-06-08 23:54:26.766649 - user - PhotoBooth: Click sur les boutons de changement du nombre d'impressions
+2022-06-08 23:54:29.850563 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-08 23:54:29.880511 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-08 23:54:30.989007 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-08 23:54:31.907409 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-08 23:54:36.625658 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-08 23:54:36.836162 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-08 23:54:36.920747 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-08 23:54:36.943024 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:54:36.942026 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-08 23:54:36.961971 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:54:36.972832 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-08 23:54:37.466625 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-08 23:55:07.548140 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-08 23:55:09.583996 - Note - PhotoBooth: Focus Photo initial
+2022-06-08 23:55:11.615188 - Note - PhotoBooth: Arret du flux video
+2022-06-08 23:55:11.636981 - Note - Module Webcam: Arret de la Webcam
+2022-06-08 23:55:12.614065 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-08 23:55:12.638333 - Note - PhotoBooth: Focus Photo final
+2022-06-08 23:55:12.649604 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-08 23:55:12.770926 - Note - Module Webcam: Lancement de la capture video
+2022-06-08 23:55:13.725662 - Note - PhotoBooth: Prise de la photo
+2022-06-08 23:55:16.005333 - user - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-08 23:55:16.587530 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-08 23:55:20.983035 - Admin - PhotoBooth: Click sur le bouton de fermeture
+2022-06-08 23:55:21.072607 - Note - PhotoBooth: Sortie de la veille
+2022-06-08 23:55:21.150931 - Note - Module remoteTrigger: Fermeture de Remote
+2022-06-08 23:55:22.340465 - WAYPOINT - PhotoBooth-Master: Fermeture Normale du PhotoBooth initiee par l'administrateur
+
+
+2022-06-09 00:04:01.940954 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:02.344494 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:04:03.011546 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:04.026753 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:04:05.472974 - Info - Module remoteTrigger: Ouverture de Remote Window - 5%
+2022-06-09 00:04:07.155611 - Info - Module remoteTrigger: Ouverture de Remote Window - 10%
+2022-06-09 00:04:08.230422 - Info - Module remoteTrigger: Ouverture de Remote Window - 15%
+2022-06-09 00:04:09.416796 - Info - Module remoteTrigger: Ouverture de Remote Window - 20%
+2022-06-09 00:04:10.455383 - Info - Module remoteTrigger: Ouverture de Remote Window - 25%
+2022-06-09 00:04:10.522456 - Note - Module remoteTrigger: Remote Window est ouvert
+2022-06-09 00:04:13.387725 - Info - Module remoteTrigger: APN pas encore opérationnel
+2022-06-09 00:04:22.864954 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:04:23.067623 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:04:23.179614 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:04:25.386803 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:04:25.415406 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:04:26.554439 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:27.355259 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:04:32.088161 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:04:32.166227 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:04:32.222379 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:04:34.360899 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:04:34.401434 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:04:35.337808 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:36.257273 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:04:40.867588 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:04:41.049001 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:04:41.127320 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:04:43.229000 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:04:43.257223 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:04:44.253850 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:45.119120 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:04:49.856077 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:04:49.963877 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:04:50.018646 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:04:52.139881 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:04:52.166220 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:04:53.123010 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:04:54.005471 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:04:58.731275 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:04:58.852880 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:04:58.931640 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:05:00.928287 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:05:00.979596 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:05:01.962040 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:05:02.842591 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:22:10.820920 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:22:11.271793 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:22:12.068415 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:22:12.891146 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:22:17.575726 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:22:17.862087 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:22:17.990065 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-09 00:22:18.023410 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-09 00:24:40.080625 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:24:40.116219 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:24:41.501407 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:24:42.433618 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:24:47.128065 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:24:47.355170 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:24:47.437798 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:24:49.437202 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:24:49.471115 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:24:50.458932 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:24:51.367735 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:24:56.207298 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:24:56.280774 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:24:56.337088 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:24:58.316380 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:24:58.340141 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:24:59.297019 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:00.171596 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:04.881288 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:25:04.992349 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:25:05.064585 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:25:07.054880 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:25:07.081637 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:25:08.019438 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:08.907065 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:13.658377 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:25:13.732156 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:25:13.782790 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:25:15.735911 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:25:15.768004 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:25:16.714235 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:17.607189 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:22.313545 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:25:22.428577 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:25:22.497958 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:25:24.529601 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:25:24.571795 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:25:25.859192 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:26.734067 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:26.847706 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:25:26.878844 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:25:26.978918 - INFO - Photobooth: Flag4
+2022-06-09 00:25:31.584960 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:25:43.966114 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:44.395814 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:25:44.786013 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:45.411389 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:45.572716 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:25:45.704260 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:25:45.722159 - INFO - Photobooth: Flag4
+2022-06-09 00:25:50.258251 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:25:50.467089 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:25:50.581774 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:25:52.830138 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:25:52.862824 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:25:53.816584 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:25:54.690068 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:25:54.829816 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:25:54.867433 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:25:54.971573 - INFO - Photobooth: Flag4
+2022-06-09 00:26:36.033618 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:26:36.452791 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:26:36.846881 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:26:37.432383 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:26:37.642918 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:26:37.749101 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:26:37.766426 - INFO - Photobooth: Flag4
+2022-06-09 00:26:42.377241 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:26:42.578689 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:26:42.688960 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:26:44.920224 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:26:44.952992 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:26:45.888303 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:26:46.769303 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:26:46.887154 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:26:46.924314 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:26:47.048422 - INFO - Photobooth: Flag4
+2022-06-09 00:26:51.777771 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:26:51.867984 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:26:51.921995 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:26:54.012909 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:26:54.039254 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:26:55.011642 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:26:55.868523 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:26:55.919153 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:26:55.950217 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:26:55.968918 - INFO - Photobooth: Flag4
+2022-06-09 00:27:00.613140 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:27:00.729990 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:27:00.799933 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:27:02.888211 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:27:02.922783 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:27:24.549924 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:27:24.953471 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:27:25.825630 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:27:26.659887 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:27:26.746978 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:27:26.776088 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:27:26.793765 - INFO - Photobooth: Flag4
+2022-06-09 00:27:31.427421 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:27:31.632647 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:27:31.754596 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:27:33.908855 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:27:33.931979 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:27:34.889521 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:27:35.779357 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:27:35.906249 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:27:36.031501 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:27:36.143680 - INFO - Photobooth: Flag4
+2022-06-09 00:27:40.775752 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:27:40.859335 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:27:40.925649 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:27:43.133783 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:27:43.161768 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:27:44.122145 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:27:45.030980 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:27:45.107751 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:27:45.141162 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:27:45.236522 - INFO - Photobooth: Flag4
+2022-06-09 00:27:49.878292 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:27:50.005515 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:27:50.081292 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:27:52.329240 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:27:52.369769 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:27:53.314909 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:28:33.034798 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:28:33.452562 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:28:33.837513 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:28:34.391376 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:28:34.477055 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:28:34.590489 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:28:34.670601 - INFO - Photobooth: Flag4
+2022-06-09 00:28:39.332311 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:28:39.543419 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:28:39.660244 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:28:41.862978 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:28:51.896540 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:28:52.898233 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:28:53.812011 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:28:53.895767 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:28:53.927016 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:28:53.951230 - INFO - Photobooth: Flag4
+2022-06-09 00:28:58.698647 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:28:58.913824 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:28:59.002529 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:29:01.214393 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:29:11.256734 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:29:12.273323 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:29:13.180519 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:29:13.407886 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:29:13.465596 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:29:13.542500 - INFO - Photobooth: Flag4
+2022-06-09 00:29:18.174091 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:29:18.378494 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:29:18.473825 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:29:20.658694 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:29:30.687426 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:29:31.760352 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:29:32.637471 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:29:32.796450 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:29:32.925606 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:29:32.960467 - INFO - Photobooth: Flag4
+2022-06-09 00:29:37.646865 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:29:37.855000 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:29:37.949160 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:29:40.267494 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:29:50.312488 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:29:51.328135 - Note - Module Webcam: Connexion du Pixmap au signal
+2022-06-09 00:29:52.240522 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:29:52.333934 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:29:52.377040 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:29:52.464475 - INFO - Photobooth: Flag4
+2022-06-09 00:29:57.121969 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:29:57.327624 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:29:57.421512 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:29:59.704717 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:30:10.914673 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:30:12.212375 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:30:12.329064 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:30:12.362614 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:30:12.380594 - INFO - Photobooth: Flag4
+2022-06-09 00:30:16.990657 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:30:17.198328 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:30:17.309816 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:30:17.330587 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:30:17.361253 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:30:17.359299 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-09 00:30:17.391064 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:30:17.428305 - INFO - PhotoBooth-run: Flag3
+2022-06-09 00:30:17.483544 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-09 00:30:17.950329 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:30:20.008121 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:30:22.032750 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:30:24.106957 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:30:24.130733 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:30:25.091382 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:30:25.123296 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:30:25.133271 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:30:25.251764 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:30:26.240572 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:30:28.534268 - user - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:30:29.094815 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:30:31.423690 - User - PhotoBooth: Click sur le bouton de relance photo
+2022-06-09 00:30:31.451161 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:30:31.469468 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:30:31.489108 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:30:31.523234 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:30:31.995973 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:30:32.428670 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:30:38.931792 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:30:40.958362 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:30:42.984622 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:30:43.012385 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:30:43.989926 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:30:44.013699 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:30:44.018687 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:30:44.167289 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:30:45.146208 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:31:40.982128 - User - Veille: Mise en veille
+2022-06-09 00:31:52.534057 - Admin - PhotoBooth: Click sur le bouton de fermeture
+2022-06-09 00:31:52.645759 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:31:52.728577 - Note - Module remoteTrigger: Fermeture de Remote
+2022-06-09 00:31:53.883349 - WAYPOINT - PhotoBooth-Master: Fermeture Normale du PhotoBooth initiee par l'administrateur
+
+
+2022-06-09 00:34:33.028728 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:34:34.485330 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:34:34.544667 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:34:34.595045 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:34:34.615795 - INFO - Photobooth: Flag4
+2022-06-09 00:34:35.903335 - Info - Module remoteTrigger: Ouverture de Remote Window - 5%
+2022-06-09 00:34:37.085268 - Info - Module remoteTrigger: Ouverture de Remote Window - 10%
+2022-06-09 00:34:38.135962 - Info - Module remoteTrigger: Ouverture de Remote Window - 15%
+2022-06-09 00:34:39.276354 - Info - Module remoteTrigger: Ouverture de Remote Window - 20%
+2022-06-09 00:34:40.323063 - Info - Module remoteTrigger: Ouverture de Remote Window - 25%
+2022-06-09 00:34:40.406320 - Note - Module remoteTrigger: Remote Window est ouvert
+2022-06-09 00:34:43.676016 - Info - Module remoteTrigger: APN pas encore opérationnel
+2022-06-09 00:34:52.649867 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:34:52.865206 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:34:52.997590 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:34:53.032910 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:34:53.061204 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:34:53.059317 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-09 00:34:53.086998 - INFO - PhotoBooth-run: Flag3
+2022-06-09 00:34:53.083958 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:34:53.110890 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-09 00:34:53.596682 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:34:54.622183 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:34:54.731977 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:34:54.998388 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:34:57.161577 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:34:59.189678 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:35:01.218943 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:35:01.252913 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:35:02.254415 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:35:02.275606 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:35:02.387388 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:35:02.413951 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:35:03.359348 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:35:04.418393 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:35:05.644822 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:35:05.671497 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:35:05.701121 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:35:06.263409 - Note - PhotoBooth: Affichage de la dernière photo
+2022-06-09 00:35:06.296775 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:36:03.479786 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:37:25.212874 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:37:26.534459 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:37:26.587549 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:37:26.615273 - INFO - PhotoBooth-run: Flag2
+2022-06-09 00:37:31.233837 - Note - PhotoBooth: Initialisation de l'UI
+2022-06-09 00:37:31.445036 - Note - PhotoBooth: Mise a l'echelle des tailles de police
+2022-06-09 00:37:31.552558 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:37:31.576645 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:37:31.603856 - Note - PhotoBooth: Passeage en plein ecran
+2022-06-09 00:37:31.604848 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:31.641953 - WAYPOINT - PhotoBooth-run: Fermeture normale du processus PhotoBooth-run
+2022-06-09 00:37:31.649662 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:32.188218 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:37:33.222211 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:33.339785 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:33.603494 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:35.019169 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:35.044170 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:35.336920 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:36.755050 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:36.778859 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:37.069887 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:38.497814 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:38.528143 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:38.806008 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:40.216461 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:40.241621 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:40.525146 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:41.938075 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:42.008242 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:42.282465 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:45.066760 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:37:47.094970 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:37:49.167637 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:37:49.196561 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:37:49.475372 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:37:50.187709 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:37:50.198775 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:37:50.259431 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:37:50.377863 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:37:51.339153 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:37:52.371596 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:37:53.712675 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:37:53.736932 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:37:53.764435 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:37:54.336080 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:37:54.379925 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:38:56.274846 - User - Veille: Mise en veille
+2022-06-09 00:38:56.309609 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:39:08.860530 - User - PhotoBooth: Click sur le bouton de sortie de la mise en veille
+2022-06-09 00:39:08.930907 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:39:08.948583 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:39:08.974473 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:08.980584 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:39:08.989600 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:09.404753 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:39:10.958980 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:39:12.981543 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:39:15.008502 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:39:15.036584 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:39:15.321329 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:39:16.037715 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:39:16.029788 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:39:16.168144 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:16.192417 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:17.118541 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:39:18.067914 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:39:19.347013 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:39:19.383055 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:39:19.416614 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:39:19.978813 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:20.008478 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:21.039894 - User - PhotoBooth: Click sur le bouton de relance photo
+2022-06-09 00:39:21.185002 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:39:21.205902 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:39:21.233826 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:21.275788 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:21.780363 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:39:22.066623 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:39:22.841752 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:39:22.901307 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:23.189527 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:25.464658 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:39:27.497229 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:39:29.532303 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:39:29.562223 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:39:29.833923 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:39:30.527901 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:39:30.601539 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:30.563859 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:39:30.733103 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:31.691551 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:39:32.644599 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:39:33.945206 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:39:33.975903 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:39:34.003801 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:39:34.603573 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:34.644329 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:35.904772 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:39:37.199042 - User - PhotoBooth: Click sur le bouton de sortie de la mise en veille
+2022-06-09 00:39:37.230213 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:39:37.247530 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:39:37.271822 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:37.344402 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:37.846143 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:39:38.175239 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:39:46.969012 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:39:48.998070 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:39:51.024787 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:39:51.056981 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:39:51.332602 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:39:52.048350 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:39:52.058323 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:39:52.126589 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:39:52.220608 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:39:53.193354 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:39:54.209273 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:39:55.551722 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:39:55.579970 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:39:55.609614 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:39:56.240333 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:56.266918 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:39:58.691897 - user - PhotoBooth: Click sur les boutons de changement du nombre d'impressions
+2022-06-09 00:39:59.245619 - user - PhotoBooth: Click sur les boutons de changement du nombre d'impressions
+2022-06-09 00:40:01.453590 - User - PhotoBooth: Click sur le bouton de relance photo
+2022-06-09 00:40:01.474533 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:40:01.490490 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:40:01.510005 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:01.624164 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:02.129847 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:40:02.325322 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:40:03.214767 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:40:03.310350 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:03.577766 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:13.703701 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:40:15.734490 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:40:17.759045 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:40:17.782429 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:40:18.054422 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:40:18.784054 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:40:19.905472 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:40:20.828408 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:40:22.115739 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:40:22.212041 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:40:22.244188 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:40:22.841487 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:40:22.876094 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:40:24.941395 - User - PhotoBooth: Click sur le bouton de relance photo
+2022-06-09 00:40:24.970804 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:40:24.986275 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:40:25.006222 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:25.107223 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:25.406806 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:40:25.641543 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:40:34.753913 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:40:36.779207 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:40:38.854477 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:40:38.878137 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:40:39.157078 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:40:39.831980 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:40:39.855916 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:39.875037 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:39.879892 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:40:41.055926 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:40:41.963909 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:40:43.272980 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:40:43.293924 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:40:43.325253 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:40:43.875213 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:40:43.904659 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:40:45.019639 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:40:47.054270 - User - PhotoBooth: Click sur le bouton de sortie de la mise en veille
+2022-06-09 00:40:47.128079 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:40:47.144210 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:40:47.169816 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:47.238972 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:47.735588 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:40:47.735746 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:40:49.339841 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:40:51.365783 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:40:53.392273 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:40:53.416699 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:40:53.692731 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:40:54.370294 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:40:54.392509 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:40:54.412890 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:40:54.418708 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:40:55.627542 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:40:56.547347 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:40:57.799656 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:40:57.830637 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:40:57.879114 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:40:58.442468 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:40:58.511283 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:42:00.437572 - User - Veille: Mise en veille
+2022-06-09 00:42:00.471548 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:42:21.708562 - User - PhotoBooth: Click sur le bouton de sortie de la mise en veille
+2022-06-09 00:42:21.739930 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:42:21.760726 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:42:21.781256 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:42:21.790473 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:42:21.797565 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:42:22.235646 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:42:23.707926 - user - PhotoBooth: Click sur le bouton de prise de photo
+2022-06-09 00:42:25.732803 - Note - PhotoBooth: Focus Photo initial
+2022-06-09 00:42:27.761273 - Note - PhotoBooth: Arret du flux video
+2022-06-09 00:42:27.785232 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:42:28.056561 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:42:28.728301 - Warning - Module Webcam: L'image est toute noire, relancement de la camera
+2022-06-09 00:42:28.765362 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:42:28.781161 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:42:28.787144 - Note - PhotoBooth: Focus Photo final
+2022-06-09 00:42:29.899588 - Note - PhotoBooth: Prise de la photo
+2022-06-09 00:42:30.899313 - Note - PhotoBooth: Creation du fichier photo
+2022-06-09 00:42:32.180026 - Note - PhotoBooth: Check des ISO
+2022-06-09 00:42:32.214713 - Note - PhotoBooth: ISO trop eleve, allumage de la lumiere
+2022-06-09 00:42:32.250362 - Note - PhotoBooth: Ajout du watermark
+2022-06-09 00:42:32.780788 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:42:32.836454 - Note - PhotoBooth: Affichage de la derniere photo
+2022-06-09 00:43:34.492487 - User - Veille: Mise en veille
+2022-06-09 00:43:34.525937 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:43:57.142571 - User - PhotoBooth: Click sur le bouton de sortie de la mise en veille
+2022-06-09 00:43:57.172017 - Note - PhotoBooth: Lancement du thread de Webcam
+2022-06-09 00:43:57.190812 - Note - Module Webcam: Demarrage du thread de webcam
+2022-06-09 00:43:57.214548 - Note - Module Webcam: Nettoyage des anciennes fenetres openCV
+2022-06-09 00:43:57.221868 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:43:57.235122 - Note - Module Webcam: Lancement de la capture video
+2022-06-09 00:43:57.660654 - Note - Module Webcam: Lancement de la bouche de lecture de la camera
+2022-06-09 00:43:59.179787 - Admin - PhotoBooth: Click sur le bouton de fermeture
+2022-06-09 00:44:00.263432 - Note - PhotoBooth: Sortie de la veille
+2022-06-09 00:44:00.448073 - Note - Module remoteTrigger: Fermeture de Remote
+2022-06-09 00:44:00.477410 - Note - Module Webcam: Arret de la Webcam
+2022-06-09 00:44:00.774719 - Note - PhotoBooth: Fermeture du thread de la webcam
+2022-06-09 00:44:03.040942 - WAYPOINT - PhotoBooth-Master: Fermeture Normale du PhotoBooth initiee par l'administrateur
+
+
+2022-06-09 00:44:13.351880 - WAYPOINT - PhotoBooth-Master: 
+
+Lancement initial du Photomaton
+2022-06-09 00:44:13.378162 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:44:14.952475 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:44:15.016034 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:44:15.111601 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:44:25.144405 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:44:27.166286 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:44:27.280326 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:44:27.414126 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:44:37.458057 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:44:39.607490 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:44:39.705587 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:44:39.875205 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:44:49.915855 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:44:52.124426 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:44:52.216977 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:44:52.356882 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:45:02.406494 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:45:04.384654 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:45:04.494253 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:45:04.622722 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:45:14.670547 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:45:16.717812 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:45:16.822882 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:45:16.992496 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:45:27.039492 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:45:29.207266 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:45:29.318170 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:45:29.452509 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:45:39.499095 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:45:41.903148 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:45:42.071060 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:45:42.268047 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:45:52.305461 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:45:54.444248 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:45:54.546972 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:45:54.721505 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:46:04.762292 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:46:06.981901 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:46:07.083464 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:46:07.218044 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:46:17.261576 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:46:19.226188 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:46:19.321861 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:46:19.486323 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:46:29.525501 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:46:31.578299 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:46:31.659856 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:46:31.831094 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:46:41.875344 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:46:44.086722 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:46:44.209497 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:46:44.332242 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:46:54.374407 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run
+2022-06-09 00:46:56.380146 - WAYPOINT - PhotoBooth-run: Lancement d'un nouveau processus PhotoBooth-run
+2022-06-09 00:46:56.476066 - INFO - PhotoBooth-run: Flag1
+2022-06-09 00:46:56.630653 - ERROR - PhotoBooth-Master: Fermeture inopinee du processus PhotoBooth-Run
+2022-06-09 00:47:06.687931 - WAYPOINT - PhotoBooth-Master: Lancement d'un nouveau processus PhotoBooth-Run

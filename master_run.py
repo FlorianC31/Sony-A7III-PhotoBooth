@@ -2,12 +2,13 @@ from multiprocessing import Process
 from setproctitle import setproctitle
 from PhotoBooth import run_photobooth
 from logger import log
-
+from time import sleep
 
 if __name__ == "__main__":
 
     # Configurer notre objet de Thread pour utiliser la fonction ci-dessus
     master_process_name = "PhotoBooth-Master"
+    log("WAYPOINT", "\n\nLancement initial du Photomaton", master_process_name)
     setproctitle(master_process_name)  # set the name of the process visible by the system
     run = 1
 
@@ -35,6 +36,8 @@ if __name__ == "__main__":
             print("#                                                                                                    #")
             print("######################################################################################################")
             print("")
+            sleep(10)
+
         # Sinon, run = 0, on sort du while et on ferme normalement le programme
     
     log("WAYPOINT", "Fermeture Normale du PhotoBooth initiee par l'administrateur", master_process_name)

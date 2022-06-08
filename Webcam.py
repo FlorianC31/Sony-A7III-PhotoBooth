@@ -10,6 +10,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QImage
 from datetime import datetime
+from logger import log
 
 
 class CamThread(QThread):
@@ -17,6 +18,7 @@ class CamThread(QThread):
 
     def __init__(self, photobooth):
         super(CamThread, self).__init__()
+        log("Note", 'Demarrage du thread de webcam', "Module Webcam")
 
         cv2.destroyAllWindows()
         self.PhotoBooth = photobooth
@@ -43,9 +45,10 @@ class CamThread(QThread):
         self.cropRight = int((1-(1920-1620) / (2*1920)) * self.resolution[0])
 
     def launch_cam(self):
+        log("Note", 'Nettoyage des anciennes fenetres openCV', "Module Webcam")
         cv2.destroyAllWindows()
         self.cap.release()
-
+        log("Note", 'Lancement de la capture video', "Module Webcam")
         self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.resolution[0])
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.resolution[1])
@@ -59,12 +62,14 @@ class CamThread(QThread):
         self.launch_cam()
         first = True
 
+        log("Note", 'Lancement de la bouche de lecture de la camera', "Module Webcam")
         while self.runing:
             ret, frame = self.cap.read()
             if ret:
 
                 # Check if the picture is full black
                 if self.is_black(frame):
+                    log("Warning", "L'image est toute noire, relancement de la camera", "Module Webcam")
                     self.launch_cam()
                 else:
                     if first:
@@ -97,8 +102,9 @@ class CamThread(QThread):
                 # print('Broken Frame')
                 broken += 1
                 broken_msg = str(broken)+" broken frames"
-                self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", broken_msg))
-                self.Photobooth.warning.show()
+                log("Warning", broken_msg, "Module Webcam")
+                # self.Photobooth.warning.setText(QtCore.QCoreApplication.translate("MainWindow", broken_msg))
+                # self.Photobooth.warning.show()
                 self.cap.release()
                 break
 
@@ -112,6 +118,7 @@ class CamThread(QThread):
             return False
                 
     def stop(self):
+        log("Note", "Arret de la Webcam", "Module Webcam")
         self.changePixmap.disconnect()
         self.runing = False
         self.cap.release()
