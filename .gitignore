@@ -1,0 +1,16 @@
+.idea/misc.xml
+.idea/modules.xml
+.idea/Sony-A7III-PhotoBooth.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+__pycache__/CPU_temp.cpython-38.pyc
+__pycache__/logger.cpython-38.pyc
+__pycache__/MainWindow.cpython-38.pyc
+__pycache__/PhotoBooth.cpython-38.pyc
+__pycache__/printer.cpython-38.pyc
+__pycache__/relais.cpython-38.pyc
+__pycache__/remoteTrigger.cpython-38.pyc
+__pycache__/Webcam.cpython-38.pyc
+Ressources/Thumbs.db
+.idea/.gitignore
