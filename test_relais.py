@@ -7,6 +7,7 @@ Created on Thu Sep 17 14:47:36 2020
 import ftd2xx as ft
 import time
 import sys
+from logger import log
 
 MAXITER = 4
 
@@ -26,7 +27,8 @@ class Relais():
 
     def init(self, iter):
 
-        print("Tentative de connexion " + str(iter + 1) + "/" + str(MAXITER))
+        # print("Tentative de connexion " + str(iter + 1) + "/" + str(MAXITER))
+        log("NOTE", "Tentative de connexion " + str(iter + 1) + "/" + str(MAXITER), "Module Relais")
 
         if iter < MAXITER:
             try:
@@ -37,7 +39,8 @@ class Relais():
                 time.sleep(4)  # Wait 4 seconds
                 self.init(iter + 1)
         else:
-            print('Impossible de se connecter à la carte relais, vérifier les connexions')
+            # print('Impossible de se connecter à la carte relais, vérifier les connexions')
+            log("ERROR", "Impossible de se connecter à la carte relais, vérifier les connexions", "Module Relais")
             sys.exit(0)
 
     def setRelay(self, relay, state):
@@ -54,17 +57,20 @@ class Relais():
             self.device.write(chr(newRelayStates))
 
     def getDeviceInfo(self):
-        print(self.device.getDeviceInfo())
+        # print(self.device.getDeviceInfo())
+        log("INFO", "Relais Device Info: " + self.device.getDeviceInfo(), "Module Relais")
 
     def ON(self, SlotName):
         slotID = self.slot[SlotName]
         self.setRelay(self.getRelayID(slotID), True)
-        print("Relais " + str(slotID) + ": ON")
+        # print("Relais " + str(slotID) + ": ON")
+        log("NOTE", "Relais " + str(slotID) + ": ON", "Module Relais")
 
     def OFF(self, SlotName):
         slotID = self.slot[SlotName]
         self.setRelay(self.getRelayID(slotID), False)
-        print("Relais " + str(slotID) + ": OFF")
+        # print("Relais " + str(slotID) + ": OFF")
+        log("NOTE", "Relais " + str(slotID) + ": OFF", "Module Relais")
 
     def close(self):
         self.device.close()
