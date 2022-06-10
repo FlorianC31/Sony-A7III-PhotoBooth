@@ -138,22 +138,22 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>859</y>
+     <y>890</y>
      <width>150</width>
-     <height>211</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Never Say Never</family>
-     <pointsize>20</pointsize>
+     <pointsize>36</pointsize>
     </font>
    </property>
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;654&lt;br/&gt;photos&lt;br/&gt;restantes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>888</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -162,6 +162,35 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+   <widget class="QLabel" name="photos_restantes">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>960</y>
+      <width>150</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Never Say Never</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>photos
+restantes</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   <widget class="QLabel" name="loading">
    <property name="geometry">
     <rect>
@@ -651,6 +680,7 @@ color: rgb(255, 255, 255);</string>
   <zorder>logo1</zorder>
   <zorder>logo2</zorder>
   <zorder>compteur</zorder>
+  <zorder>photos_restantes</zorder>
   <zorder>widgetDevelopper</zorder>
   <zorder>flash</zorder>
   <zorder>veilleButton</zorder>

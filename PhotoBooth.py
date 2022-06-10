@@ -124,20 +124,21 @@ class PhotoBooth(Ui_PhotoBooth):
 
     def set_scale(self):
         log("Note", "Mise a l'echelle des tailles de police", "PhotoBooth")
-        self.sef_font(self.MainWindow)
-        self.sef_font(self.compteur)
-        self.sef_font(self.nbPrintLabel)
-        self.sef_font(self.buttonIncrease)
-        self.sef_font(self.buttonDecrease)
-        self.sef_font(self.buttonPrinter)
-        self.sef_font(self.buttonRestart)
-        self.sef_font(self.buttonCancel)
-        self.sef_font(self.buttonPhoto)
-        self.sef_font(self.veilleButton)
-        self.sef_font(self.countdown)
-        self.sef_font(self.lookUp)
+        self.set_font(self.MainWindow)
+        self.set_font(self.compteur)
+        self.set_font(self.nbPrintLabel)
+        self.set_font(self.buttonIncrease)
+        self.set_font(self.buttonDecrease)
+        self.set_font(self.buttonPrinter)
+        self.set_font(self.buttonRestart)
+        self.set_font(self.buttonCancel)
+        self.set_font(self.buttonPhoto)
+        self.set_font(self.veilleButton)
+        self.set_font(self.countdown)
+        self.set_font(self.lookUp)
+        self.set_font(self.photos_restantes)
 
-    def sef_font(self, qt_elm):
+    def set_font(self, qt_elm):
         font_info = qt_elm.fontInfo()
         font = QtGui.QFont()
 
@@ -381,7 +382,7 @@ class PhotoBooth(Ui_PhotoBooth):
             csvFile.write(';'.join(line))
 
     def show_compt_print(self):
-        text = str(self.comptPrint)+'\nphotos\nrestantes'
+        text = str(self.comptPrint)
         self.compteur.setText(QtCore.QCoreApplication.translate("MainWindow", text))
 
 
