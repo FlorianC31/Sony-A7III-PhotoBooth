@@ -138,7 +138,7 @@ class PhotoBooth(Ui_PhotoBooth):
         self.set_font(self.lookUp)
         self.set_font(self.photos_restantes)
 
-    def set_font(self, qt_elm):
+    def set_font(self, qt_elm, coeff = 1):
         font_info = qt_elm.fontInfo()
         font = QtGui.QFont()
 
@@ -147,10 +147,10 @@ class PhotoBooth(Ui_PhotoBooth):
         font.setItalic(font_info.italic())
 
         ref_font_size = font_info.pointSize() 
-        font.setPointSize(int(round(ref_font_size / SCALE, 0)))
+        font.setPointSize(int(round(ref_font_size / SCALE * coeff, 0)))
 
         ref_font_weight = font_info.weight() 
-        font.setWeight(int(round(ref_font_weight / SCALE, 0)))
+        font.setWeight(int(round(ref_font_weight / SCALE * coeff, 0)))
                 
         qt_elm.setFont(font)
 
@@ -181,9 +181,17 @@ class PhotoBooth(Ui_PhotoBooth):
 
         self.viewer.setPixmap(pixmap)
 
-        self.widgetPrint.show()
+        if self.comptPrint == 0:
+            self.nbPrint = 0
+            self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", "Plus de\nphotos"))
+            self.set_font(self.nbPrintLabel, 0.5)
+            self.buttonIncrease.hide()
+            self.buttonDecrease.hide()
+            self.buttonPrinter.hide()
+        else:
+            self.change_nb_print(0)
         
-        self.change_nb_print(0)
+        self.widgetPrint.show()
 
     def start_countdown(self):
         log("user", "Click sur le bouton de prise de photo", "PhotoBooth")
@@ -326,20 +334,27 @@ class PhotoBooth(Ui_PhotoBooth):
 
     def change_nb_print(self, i):
         self.action_done = True
-        if i == 0:
-            self.nbPrint = 1
-        else:
-            log("user", "Click sur les boutons de changement du nombre d'impressions", "PhotoBooth")
-            self.nbPrint = min(max(1, self.nbPrint+i), 6)
-        self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.nbPrint)))
-
-        if self.nbPrint == 1:
+        if self.comptPrint == 0:
+            self.nbPrint = 0
             self.gray(self.buttonDecrease)
-        elif self.nbPrint == 6:
             self.gray(self.buttonIncrease)
         else:
-            self.ungray(self.buttonDecrease)
-            self.ungray(self.buttonIncrease)
+            if i == 0:
+                self.nbPrint = 1
+            else:
+                log("user", "Click sur les boutons de changement du nombre d'impressions", "PhotoBooth")
+                self.nbPrint = min(max(1, self.nbPrint+i), 6, self.comptPrint)
+            self.nbPrintLabel.setText(QtCore.QCoreApplication.translate("MainWindow", str(self.nbPrint)))
+
+            if self.nbPrint == 1:
+                self.gray(self.buttonDecrease)
+            else:
+                self.ungray(self.buttonDecrease)
+
+            if self.nbPrint == min(6, self.comptPrint):
+                self.gray(self.buttonIncrease)
+            else:
+                self.ungray(self.buttonIncrease)
 
     def ungray(self, button):
         button.setStyleSheet("background-color: transparent;\ncolor: rgb(255, 255, 255);")
@@ -355,16 +370,17 @@ class PhotoBooth(Ui_PhotoBooth):
         log("Note", "Extinction du ventilo de l'imprimante", "PhotoBooth")
 
     def send2printer(self):
-        log("user", "Lancement de l'impression de " + str(self.nbPrint) + " photos", "PhotoBooth")
-        self.action_done = True
-        for _ in range(self.nbPrint):
-            printer(self.lastPhoto)
+        if self.comptPrint > 0:
+            log("user", "Lancement de l'impression de " + str(self.nbPrint) + " photos", "PhotoBooth")
+            self.action_done = True
+            for _ in range(self.nbPrint):
+                printer(self.lastPhoto)
 
-        self.printer_fan_thread = Thread(target=self.printer_fan_controler)
-        self.printer_fan_thread.start()
+            self.printer_fan_thread = Thread(target=self.printer_fan_controler)
+            self.printer_fan_thread.start()
 
-        self.set_compt_print(self.nbPrint)
-        self.show_cam(0)
+            self.set_compt_print(self.nbPrint)
+            self.show_cam(0)
 
     def get_compt_print(self):
         with open("compteur.txt", "r") as file:
