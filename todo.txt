@@ -2,3 +2,5 @@ aggrandir le nombre de photos restantes
 bruit de déclenchement
 recherche du probleme au lancement de Qt: 
 QWindowsContext: OleInitialize() failed:  "COM error 0xffffffff80010106 RPC_E_CHANGED_MODE (Unknown error 0x080010106)"
+
+Reste dans le rouleau: 108 (19/12/2022)
